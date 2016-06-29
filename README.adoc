@@ -1,0 +1,104 @@
+= Apache Isis – Closing the Architecture/Code Gap
+
+This repository holds the slides for the
+link:https://jaxlondon.com/session/apache-isis-closing-the-architecturecode-gap/[Apache Isis – Closing the Architecture/Code Gap] session, run at
+link:https://jaxlondon.com/[JAX London 2016].
+
+
+Being run by link:http://www.spaconference.org/scripts/people.php?username=DanHaywood[Dan Haywood], with more than
+a little help from Jeroen van der Wal.
+
+
+== Publication
+
+The slides will be/are published at http://danhaywood.com/jaxlondon2016.
+
+
+
+
+== Under the covers
+
+The tutorial slides have been developed using link:http://asciidoctor.org/[AsciiDoctor], using
+link:http://lab.hakim.se/reveal-js/[reveal.js] as the rendering backend.
+
+
+== To build and preview
+
+To build and preview the website, use:
+
+[source,bash]
+----
+$ sh preview.sh
+----
+
+or in long-hand:
+
+[source,bash]
+----
+./gradlew --offline clean asciidoctor && pushd build/asciidoc/revealjs && python -m SimpleHTTPServer 8000
+----
+
+Then open link:http://localhost:8000/index.html[http://localhost:8000/index.html]
+
+
+
+== To publish
+
+The tutorial is hosted at link:http://danhaywood.github.io/jaxlondon2016[danhaywood.github.io/jaxlondon2016], using github's
+`gh-pages`.
+
+Assuming that a second copy of the repository is checked out to `../jaxlondon2016-gh-pages`, in the `gh-pages` branch, use:
+
+[source,bash]
+----
+sh publish.sh
+----
+
+or in long-hand:
+
+[source,bash]
+----
+pushd ../jaxlondon2016-gh-pages
+git rm -rf .
+popd
+pushd build/asciidoc/revealjs
+cp -r . ../../../../jaxlondon2016-gh-pages/.
+popd
+pushd ../jaxlondon2016-gh-pages
+git add .
+git commit -m "updating"
+git push origin gh-pages
+popd
+----
+
+
+
+
+== Appendices
+
+=== Preparing the `gh-pages` branch
+
+Using the procedure described https://help.github.com/articles/creating-project-pages-manually/[here], the
+following steps were performed to set up the `gh-pages` branch for publishing:
+
+[source,bash]
+----
+git clone https://github.com/danhaywood/jaxlondon2016.git ../jaxlondon2016-gh-pages
+cd ../jaxlondon2016-gh-pages
+git checkout --orphan gh-pages
+git rm -rf .
+rm '.gitignore'
+echo "My Page" > index.html
+git add index.html
+git commit -a -m "First pages commit"
+git push origin gh-pages
+----
+
+
+=== IntelliJ
+
+If you're using IntelliJ you can generate the IDE's files via:
+
+ $ ./gradlew idea
+
+Open the file _build/asciidoc/reveal/example-manual.html_ in your browser to see the generated revealjs file.
