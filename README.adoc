@@ -5,13 +5,13 @@ link:https://jaxlondon.com/session/apache-isis-closing-the-architecturecode-gap/
 link:https://jaxlondon.com/[JAX London 2016].
 
 
-Being run by link:http://www.spaconference.org/scripts/people.php?username=DanHaywood[Dan Haywood], with more than
-a little help from Jeroen van der Wal.
+Being presented by link:https://jaxlondon.com/speaker/dan-haywood/[Dan Haywood] and link:https://jaxlondon.com/speaker/eoin-woods/[Eoin Woods].
+
 
 
 == Publication
 
-The slides will be/are published at http://danhaywood.com/jaxlondon2016.
+The slides will be/are published link:http://danhaywood.com/jaxlondon2016[here].
 
 
 
@@ -20,6 +20,7 @@ The slides will be/are published at http://danhaywood.com/jaxlondon2016.
 
 The tutorial slides have been developed using link:http://asciidoctor.org/[AsciiDoctor], using
 link:http://lab.hakim.se/reveal-js/[reveal.js] as the rendering backend.
+
 
 
 == To build and preview
