@@ -18,7 +18,7 @@ The slides will be/are published link:http://danhaywood.com/jaxlondon2016[here].
 
 == Under the covers
 
-The tutorial slides have been developed using link:http://asciidoctor.org/[AsciiDoctor], using
+The slides have been developed using link:http://asciidoctor.org/[AsciiDoctor], using
 link:http://lab.hakim.se/reveal-js/[reveal.js] as the rendering backend.
 
 
@@ -45,8 +45,8 @@ Then open link:http://localhost:8000/index.html[http://localhost:8000/index.html
 
 == To publish
 
-The tutorial is hosted at link:http://danhaywood.github.io/jaxlondon2016[danhaywood.github.io/jaxlondon2016], using github's
-`gh-pages`.
+The slides is hosted at link:http://danhaywood.github.io/jaxlondon2016[danhaywood.github.io/jaxlondon2016], using github's
+`gh-pages`.  A CNAME record redirects to link:http://danhaywood.com/jaxlondon2016[Dan's blog].
 
 Assuming that a second copy of the repository is checked out to `../jaxlondon2016-gh-pages`, in the `gh-pages` branch, use:
 

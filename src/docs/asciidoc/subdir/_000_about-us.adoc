@@ -1,0 +1,46 @@
+== About Us
+
+
+* Eoin Woods
+
+* Dan Haywood
+
+[TIP]
+====
+note to Eoin: press 'Esc', arrow keys, 's' for speaker notes
+====
+
+
+
+[NOTE.speaker]
+====
+Original abstract:
+
+* A problem all software projects encounter is making sure that code reflects the desired architectural principles/constraints. Many approaches have been tested, but the practical unification of architecture and code still eludes us.
+
+* Apache Isis takes a different approach, forcibly separating architectural constructs from domain model, combining the two at runtime. It promises to free the developer from writing “boilerplate” and focus on the domain model instead.
+
+* In this talk we’re going to explore these architectural issues and demonstrate how the framework addresses these.
+====
+
+
+
+
+== Setting the scene
+
+* ...
+
+* ...
+
+* But let's assume
+** we're building a custom "line-of-business" application for our company
+** that such a system has relatively complex domain logic
+
+
+NOTE: TODO - refactor as required
+
+
+[NOTE.speaker]
+--
+for Eoin to set the scene
+--

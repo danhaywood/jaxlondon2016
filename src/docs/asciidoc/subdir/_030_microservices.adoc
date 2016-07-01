@@ -1,0 +1,45 @@
+[data-background="#243"]
+== How does this approach for microservices?
+
+* for a long-lived systems, modularity is important
+
+* the current vogue is of course microservices
+
+* can an Apache Isis app be a microservice?
+
+* and if it's not, how do you prevent the system becoming a big ball of mud?
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+=== How does this approach for microservices?
+
+
+* you can (of course) build microservices using Isis, and surface the REST API
+
+* the framework integrates Swagger - swagger-ui and a maven plugin to generate a swagger spec
+
+
+NOTE: TODO - tidy up
+
+[NOTE.speaker]
+--
+Dan's answer
+--
+
+
+
+=== An aside...
+
+* there will be many microservice project failures, because it requires an early decision on the boundaries of each service
+
+
+[NOTE.speaker]
+--
+Dan's mini-rant
+--

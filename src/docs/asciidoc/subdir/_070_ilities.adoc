@@ -1,0 +1,85 @@
+[data-background="#243"]
+== What about the "ilities" ?
+
+* security ?
+
+* auditability ?
+
+* i18n ?
+
+* testability ?
+
+
+
+NOTE: TODO - fleshing out required
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+
+=== Security
+
+* Shiro
+
+
+NOTE: TODO - fleshing out required
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Auditability
+
+* Auditer SPI and add-on
+* Publisher SPI and add-on
+
+
+
+NOTE: TODO - fleshing out required
+
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+
+Eoin ask for demo on this
+--
+
+
+=== i18n
+
+* `.po` files rather than ``ResourceBundle``s
+
+
+
+NOTE: TODO - fleshing out required
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Testability
+
+* WrapperFactory
+
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+
+Eoin asks for demo of this
+--

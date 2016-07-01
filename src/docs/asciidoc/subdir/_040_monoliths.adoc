@@ -1,0 +1,29 @@
+[data-background="#243"]
+== How do you prevent the system becoming a big ball of mud?
+
+* if you aren't building microservices, how do your monoliths not become big balls of mud?
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+=== How do you prevent the system becoming a big ball of mud?
+
+
+* the framework explicitly we're after creating modular monoliths
+
+
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+

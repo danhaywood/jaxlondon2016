@@ -1,0 +1,56 @@
+[data-background="#243"]
+== What sort of users would use these systems?
+
+* ...
+* ...
+
+
+NOTE: TODO - words required
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+
+=== What sort of users would use these systems?
+
+* Problem Solver
+
+* Process Follower
+
+
+NOTE: TODO - fleshing out required
+
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+
+also to lead into the next slide; "this is actually the answer to a deeper question..."
+--
+
+
+
+=== why build rather than buy, anyway?
+
+
+* translation (by way of Excel and other hacks) from end-user's internalized domain model into app
+
+* translation *by way of a datawarehouse) from app to allow executive to make sense
+
+
+[NOTE.speaker]
+--
+for Dan to continue the theme
+--
+
+
+
+=== Translations...
+
+NOTE: TODO - picture here, perhaps
+

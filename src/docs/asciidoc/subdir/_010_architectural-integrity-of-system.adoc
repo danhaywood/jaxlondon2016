@@ -1,0 +1,71 @@
+[data-background="#243"]
+== How do we preserve the architectural integrity of the application?
+
+
+* how do we ensure that domain logic does not leach from one layer into an adjacent layer?
+
+* how do we ensure that its domain logic is easy to find, modify, test?
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+=== How do we preserve the architectural integrity of the application?
+
+
+* we adopt a hexagonal architecture
+
+** (also known as ports-and-adapters)
+
+
+
+[NOTE.speaker]
+--
+Dan's answer
+--
+
+
+
+[data-transition="cube"]
+=== {nbsp}
+
+[.thumb]
+image::hexagonal-architecture.png[scaledwidth=75%]
+
+
+
+=== How do we preserve the architectural integrity of the application?
+
+* we adopt a hexagonal architecture
+
+** (also known as ports-and-adapters)
+
+* we make the boundary of that hexagon solid
+
+** because the container *is* framework code
+** you couldn't write business logic there even if you wanted to
+** it's an orthogonal concern
+
+
+
+[NOTE.speaker]
+--
+more of Dan's answer
+
+long-term, this seems to work...
+
+* 12 years on government system
+* over its lifetime, hundreds of developers
+* still releasing monthly
+
+* no adjacent layers for business logic to leach out into
+
+Eoin to prompt demo: "can you demo something to illustrate that?"
+--
+
+
+

@@ -1,0 +1,31 @@
+[data-background="#243"]
+== How do we ensure that the architectural integrity of the larger enterprise?
+
+
+* how do we ensure that the boundaries of the bounded contexts are not eroded over time?
+
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+=== How do we ensure that the architectural integrity of the larger enterprise?
+
+* ability to publish each action or property edit as an event
+** reified to XML
+
+* REST API with conneg support to access data
+
+
+[NOTE.speaker]
+--
+Dan's answer
+
+Eoin to ask: "and can you demo something to illustrate that?"
+--
+
+

@@ -1,0 +1,77 @@
+[data-background="#243"]
+== How does the approach help build the right system?
+
+* ...
+* ...
+
+NOTE: TODO - words required here
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+=== Feedback loop
+
+* don't tend to use BDD
+
+* speed of development, no UI
+
+* feedback loop
+
+
+
+NOTE: TODO - fleshing out required
+
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Contentious?
+
+* outside-in
+** user journeys
+
+* inside-out
+** domain invariants
+** journey in the user's head
+
+
+
+NOTE: TODO - fleshing out required
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Patterns and Idioms
+
+* opinionated rather than blank canvas
+* different skill levels
+** can grow those skills
+
+
+NOTE: TODO - fleshing out required
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+
+* discuss the "clusters pattern" - impls talk to APIs - enforced via the build system
+* api vs events vs impl
+--
+
+

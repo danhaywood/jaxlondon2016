@@ -1,0 +1,114 @@
+[data-background="#243"]
+== What about lock-in ?
+
+
+* ...
+* ...
+
+
+NOTE: TODO - words required
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+=== View Layer
+
+* Use the REST API
+** Naked Objects.NET have a new REST only API
+** for their BSc project, an intern developed a command line/speech API for blind users
+
+* Wavemaker
+
+* NoWicket
+
+* write a new one, eg Vaadin
+
+
+NOTE: TODO - tidy-up required
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Persistence Layer
+
+* The framework uses DataNucleus, which implements JDO and JPA
+
+* Most in the community persist to a relational database
+
+* DataNucleus provides an SPI for multiple stores, including NoSQL
+** Neo4J, Mongo, Cassandra
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Security
+
+* Pluggable
+
+* Shiro
+
+* oAuth2 implemented within the user community
+
+
+NOTE: TODO - fleshing-out required
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+=== Coding style
+
+* there's an ORM rehydrating the objects, so there are constraints there
+
+* a blend of orientations
+** OO for the mutable entities
+** Functional for value types (can plug in your own)
+** Aspect oriented for the cross-cutting concerns
+
+
+NOTE: TODO - tidying-up required
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+
+=== Deployment Options
+
+* prototyping
+
+* production
+
+** on the Apache Isis platform
+** host within Spring/CDI say
+
+
+NOTE: TODO - fleshing-out required
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
