@@ -1,3 +1,4 @@
+[data-transition="slide-in fade-out"]
 [data-background="#243"]
 == What about lock-in ?
 
@@ -6,7 +7,15 @@
 * ...
 
 
-NOTE: TODO - words required
+[TIP]
+====
+note to Eoin:
+
+* this section might also be too much material.
+
+* of all the stuff here, might be worth keeping subsection on different deployment options
+====
+
 
 
 [NOTE.speaker]
@@ -16,6 +25,7 @@ for Eoin to ask
 
 
 
+[data-transition="fade"]
 === View Layer
 
 * Use the REST API
@@ -29,7 +39,6 @@ for Eoin to ask
 * write a new one, eg Vaadin
 
 
-NOTE: TODO - tidy-up required
 
 
 [NOTE.speaker]
@@ -39,6 +48,7 @@ for Dan to answer
 
 
 
+[data-transition="fade"]
 === Persistence Layer
 
 * The framework uses DataNucleus, which implements JDO and JPA
@@ -56,28 +66,14 @@ for Dan to answer
 
 
 
-=== Security
-
-* Pluggable
-
-* Shiro
-
-* oAuth2 implemented within the user community
 
 
-NOTE: TODO - fleshing-out required
-
-
-[NOTE.speaker]
---
-for Dan to answer
---
-
-
-
+[data-transition="fade"]
 === Coding style
 
-* there's an ORM rehydrating the objects, so there are constraints there
+* there's an ORM rehydrating the objects, so that constrains what is valid to some extent
+
+* the Isis metamodel is quite extensible; can add support for own annotations etc
 
 * a blend of orientations
 ** OO for the mutable entities
@@ -85,16 +81,10 @@ for Dan to answer
 ** Aspect oriented for the cross-cutting concerns
 
 
-NOTE: TODO - tidying-up required
-
-[NOTE.speaker]
---
-for Dan to answer
---
 
 
 
-
+[data-transition="fade"]
 === Deployment Options
 
 * prototyping
@@ -105,7 +95,6 @@ for Dan to answer
 ** host within Spring/CDI say
 
 
-NOTE: TODO - fleshing-out required
 
 
 [NOTE.speaker]

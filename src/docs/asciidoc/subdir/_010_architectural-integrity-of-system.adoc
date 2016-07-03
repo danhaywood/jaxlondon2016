@@ -1,10 +1,12 @@
+[data-transition="slide-in fade-out"]
 [data-background="#243"]
-== How do we preserve the architectural integrity of the application?
+== How to preserve the architectural integrity of the system?
 
 
-* how do we ensure that domain logic does not leach from one layer into an adjacent layer?
+* how do you ensure that domain logic does not leach from one layer into an adjacent layer?
 
-* how do we ensure that its domain logic is easy to find, modify, test?
+* how do you ensure that its domain logic is easy to find, modify, test?
+
 
 
 [NOTE.speaker]
@@ -14,7 +16,8 @@ for Eoin to ask
 
 
 
-=== How do we preserve the architectural integrity of the application?
+[data-transition="fade"]
+=== How to preserve the architectural integrity of the system?
 
 
 * we adopt a hexagonal architecture
@@ -30,26 +33,25 @@ Dan's answer
 
 
 
-[data-transition="cube"]
-=== {nbsp}
+[data-transition="fade"]
+=== How to preserve the architectural integrity of the system?
 
 [.thumb]
 image::hexagonal-architecture.png[scaledwidth=75%]
 
 
 
-=== How do we preserve the architectural integrity of the application?
+[data-transition="fade"]
+=== How to preserve the architectural integrity of the system?
 
-* we adopt a hexagonal architecture
 
-** (also known as ports-and-adapters)
+* we make the *boundary of the hexagon can't be breached*
 
-* we make the boundary of that hexagon solid
+** beyond the boundary is framework code; you couldn't write business logic there even if you wanted to
+** presentation and persistence concerns are orthogonal to the domain
 
-** because the container *is* framework code
-** you couldn't write business logic there even if you wanted to
-** it's an orthogonal concern
-
+* domain logic is easy to trace
+** the *UI is a direct representation* of that domain logic
 
 
 [NOTE.speaker]
@@ -64,7 +66,10 @@ long-term, this seems to work...
 
 * no adjacent layers for business logic to leach out into
 
-Eoin to prompt demo: "can you demo something to illustrate that?"
+
+Demo:
+
+* show how a new business action is automatically shown in the UI
 --
 
 

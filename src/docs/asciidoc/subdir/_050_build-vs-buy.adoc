@@ -1,0 +1,70 @@
+[data-transition="slide-in fade-out"]
+[data-background="#243"]
+== Why build rather than buy, anyway?
+
+* The "sweet spot" for an Apache Isis application is one with a rich domain, such as case{nbsp}management, or order{nbsp}fulfillment
+
+* Stepping back, does it even make sense to build such an app?  Why not just buy some off-the-shelf packaged software?
+
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+
+
+[data-transition="fade"]
+=== Why build rather than buy, anyway?
+
+
+* We should distinguish between the business' core domain and any supporting sub-domains
+
+* You should **build for your business' core domain**
+** otherwise you'll be held hostage to your software vendor's view of how your company should operate
+** and, you won't be able to evolve your business
+
+* But, you should **buy for any supporting sub-domains**
+** accounting, HR, document management
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+
+no business benefit in being able to pay your employees more efficiently than your competitor
+--
+
+
+
+[data-transition="fade"]
+=== Transformation costs
+
+* Using packaged software means your business users will end up *translating their own internalized domain model* to/from that of the app
+
+* *Excel* for the back-office staff to transform inputs into the form expected of the app
+
+* **Data warehouse**s to allow executives to make sense of the state of their business
+
+
+
+
+[data-transition="fade"]
+=== Using packaged software
+
+[.thumb]
+image::translation/slide1.png[]
+
+
+
+[data-transition="fade"]
+=== Using custom software
+
+
+
+[.thumb]
+image::translation/slide2.png[]
+

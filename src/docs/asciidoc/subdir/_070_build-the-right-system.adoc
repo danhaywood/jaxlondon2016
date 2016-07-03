@@ -1,0 +1,98 @@
+[data-transition="slide-in fade-out"]
+[data-background="#243"]
+== How does the framework help build the right system?
+
+* ...
+* ...
+
+
+
+[NOTE.speaker]
+--
+for Eoin to ask
+--
+
+
+
+[data-transition="fade"]
+=== How does the framework help build the right system?
+
+* By providing a *tight feedback loop*
+** no UI to develop
+
+* By demonstrating an *actual running system*
+** Creates empathy/association
+
+* Also, it builds the *ubiquitous language*
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+
+anecdote about our users, for whom we had to demonstrate the app with their actual (migrated) production data
+--
+
+
+
+[data-transition="convex-in fade-out"]
+=== Contentious? or sensible?
+
+* Agile methods prefer developing from the outside-in
+** user journeys, captured via BDD etc.
+
+* We tend to develop from the *inside-out*
+** domain entities first with their domain invariants
+** then add view models to support specific use cases
+** then add layouts for user experience
+
+* We don't try to infer the domain from a bunch of screens
+
+
+[NOTE.speaker]
+--
+for Dan to answer
+--
+
+
+
+
+
+[data-transition="fade"]
+=== Testability
+
+
+* Unit testing is trivial; Apache Isis apps are glued together using *dependency injection*
+
+* Integration testing is also done within JUnit
+
+* We use *fixture{nbsp}scripts* (our own mini-framework) to initialize the (in-memory) database
+** can also be used when prototyping
+
+* For the tests themselves, the `WrapperFactory` service simulates the UI
+** No selenium here, thank you very much!
+
+
+
+[NOTE.speaker]
+--
+"As well as building the right system, must also build the system right"
+
+Demo
+--
+
+
+[data-transition="convex-in fade-out"]
+=== Patterns and Idioms
+
+* The framework is also somewhat opinionated
+
+* Easy enough to learn
+
+* Accommodates different skill levels of (developers)
+
+
+NOTE: TODO - not sure this point is strong enough to keep; lots of frameworks can say this, and there's not much to demonstrate
+
+
+

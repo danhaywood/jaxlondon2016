@@ -1,8 +1,8 @@
+[data-transition="slide-in fade-out"]
 [data-background="#243"]
-== How do we ensure that the architectural integrity of the larger enterprise?
+== How to ensure the application plays well in the larger enterprise?
 
-
-* how do we ensure that the boundaries of the bounded contexts are not eroded over time?
+* how do you ensure that the boundaries of the bounded contexts are not eroded over time?
 
 
 
@@ -13,19 +13,61 @@ for Eoin to ask
 
 
 
-=== How do we ensure that the architectural integrity of the larger enterprise?
+[data-transition="fade"]
+=== How to ensure the application plays well in the larger enterprise?
 
-* ability to publish each action or property edit as an event
-** reified to XML
+* Every action invocation is captured as an `Interaction`
+** target object, the member identifier, the arguments
 
-* REST API with conneg support to access data
+* this `Interaction` object is a JAXB-annotated DTO, reified into XML
+
+** can then be published onto an event bus
+
+* typically consumers will call back to the REST API
+** REST API with conneg support to access data
 
 
 [NOTE.speaker]
 --
 Dan's answer
-
-Eoin to ask: "and can you demo something to illustrate that?"
 --
 
+
+[data-transition="fade"]
+=== User invokes action
+
+[.thumb]
+image::publisher/slide1.png[]
+
+[data-transition="fade"]
+=== Action invocation published to bus
+
+[.thumb]
+image::publisher/slide2.png[]
+
+[data-transition="fade"]
+=== Subscriber calls back via REST API
+
+[.thumb]
+image::publisher/slide3.png[]
+
+[data-transition="fade"]
+=== Conneg used to return stable DTO
+
+[.thumb]
+image::publisher/slide4.png[]
+
+[data-transition="fade"]
+=== Interacts with other system
+
+[.thumb]
+image::publisher/slide5.png[]
+
+
+
+[NOTE.speaker]
+--
+Demo:
+* publish action
+--
 

@@ -1,0 +1,49 @@
+[data-transition="slide-in fade-out"]
+[data-background="#243"]
+== What sort of users can use an Apache{nbsp}Isis application?
+
+* ...
+* ...
+
+
+
+[data-transition="fade"]
+=== What sort of users can use an Apache{nbsp}Isis application?
+
+* We think of the end-users of our apps along a scale:
+
+[.thumb]
+image::user-archetypes.png[]
+
+
+
+[data-transition="slide-in fade-out"]
+=== Problem solvers
+
+* Problem solvers are *domain experts*, who use the application every day
+
+* Generally *interact with entities* directly
+** View models reserved for high-volume use cases
+
+* The app provides a *toolbox* for problem solvers, but doesn't mandate a process
+** the process is maleable and in the user's own head
+
+* Just use Apache{nbsp}Isis' default "Wicket" viewer
+
+
+[data-transition="fade"]
+=== Process followers
+
+* Process followers are *non-expert*, just want to accomplish simple goal
+
+* Typically *interact with view models*
+** simplifications of the domain that encode a process
+
+* Typically use a *custom app* that hits the REST API
+** or, can customize the Wicket viewer to their use cases
+
+
+[NOTE.speaker]
+--
+Demo link:http://github.com/incodehq/contactapp[github.com/incodehq/contactapp]
+--

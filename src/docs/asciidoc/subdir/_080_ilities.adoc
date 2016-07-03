@@ -1,0 +1,63 @@
+[data-transition="slide-in fade-out"]
+[data-background="#243"]
+== What about other "ilities" ?
+
+* security ?
+
+* auditability ?
+
+* i18n ?
+
+
+
+
+[TIP]
+====
+note to Eoin:
+
+* there's plenty that could be said here, and it is "architectural", but I think this is too much material, and not necessarily that related to the talk's abstract.
+====
+
+
+
+
+[data-transition="fade"]
+=== Security
+
+* Pluggable
+* out-of-the-box Shiro integration
+** integrate with LDAP, oAuth similarly
+* http://github.com/isisaddons/isis-module-security[security] add-on
+
+
+[NOTE.speaker]
+--
+Demo
+--
+
+
+
+=== Auditability
+
+* Auditer SPI and http://github.com/isisaddons/isis-module-auditing[add-on]
+
+* Publisher SPI and http://github.com/isisaddons/isis-module-publishmq[add-on]
+
+
+
+
+[NOTE.speaker]
+--
+Demo
+--
+
+
+[data-transition="fade"]
+=== i18n
+
+* `.po` files rather than ``ResourceBundle``s
+
+
+
+
+

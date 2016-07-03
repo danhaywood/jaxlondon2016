@@ -21,13 +21,17 @@ include::subdir/_030_microservices.adoc[]
 
 include::subdir/_040_monoliths.adoc[]
 
-include::subdir/_050_user-archetypes.adoc[]
+include::subdir/_050_build-vs-buy.adoc[]
 
-include::subdir/_060_build-the-right-system.adoc[]
+include::subdir/_060_user-archetypes.adoc[]
 
-include::subdir/_070-ilities.adoc[]
+include::subdir/_070_build-the-right-system.adoc[]
 
-include::subdir/_080_lock-in.adoc[]
+include::subdir/_080_ilities.adoc[]
 
-include::subdir/_090_in-conclusion.adoc[]
+include::subdir/_090_lock-in.adoc[]
+
+include::subdir/_100_in-conclusion.adoc[]
+
+include::subdir/_110_learning-more.adoc[]
 

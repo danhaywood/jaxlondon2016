@@ -7,8 +7,15 @@
 
 [TIP]
 ====
-note to Eoin: press 'Esc', arrow keys, 's' for speaker notes
+note to Eoin:
+
+* this is draft and all is up for revision/deletion/addition etc etc.  there is too much material here, I think
+
+* not sure if we'd be able to use this animated slide deck, or if there's a special template we need to use instead.  But I've created the deck anyway though cos (a) easier to version control and (b) is more enjoyable/rewarding to do.  Can always port to PPT/Keynote later if necessary
+
+* press *Esc* for overview, arrow keys, *s* for speaker notes
 ====
+
 
 
 
@@ -32,15 +39,28 @@ Original abstract:
 
 * ...
 
-* But let's assume
-** we're building a custom "line-of-business" application for our company
-** that such a system has relatively complex domain logic
-
-
-NOTE: TODO - refactor as required
-
 
 [NOTE.speaker]
 --
 for Eoin to set the scene
 --
+
+
+
+== Assumptions/context
+
+* we're building custom *line-of-business* applications
+
+* these applications have *relatively complex* domain logic
+
+
+
+[NOTE.speaker]
+--
+for Eoin to set the scene
+
+* CRUD applications are just a trivial subset of the above...
+--
+
+
+

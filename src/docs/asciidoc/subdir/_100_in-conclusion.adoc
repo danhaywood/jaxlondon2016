@@ -1,0 +1,10 @@
+[data-transition="slide-in fade-out"]
+[data-background="#243"]
+== In conclusion
+
+[%step]
+* ...
+* ...
+
+
+
