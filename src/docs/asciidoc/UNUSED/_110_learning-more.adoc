@@ -4,6 +4,7 @@
 * link:http://isis.apache.org[http://isis.apache.org]
 * link:http://www.isisaddons.org/[http://www.isisaddons.org/]
 * link:http://catalog.incode.org/[http://catalog.incode.org/]
+* link:http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf[Richard Pawson's Naked Objects PhD thesis]
 
 * link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
 * link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*

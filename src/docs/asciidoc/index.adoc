@@ -12,30 +12,467 @@ ifndef::sourcedir[:sourcedir: ../java]
 
 
 
+[NOTE.speaker]
+====
+Original abstract:
+
+* A problem all software projects encounter is making sure that code reflects the desired architectural principles/constraints. Many approaches have been tested, but the practical unification of architecture and code still eludes us.
+
+* Apache Isis takes a different approach, forcibly separating architectural constructs from domain model, combining the two at runtime. It promises to free the developer from writing “boilerplate” and focus on the domain model instead.
+
+* In this talk we’re going to explore these architectural issues and demonstrate how the framework addresses these.
+====
+
 
 
 
 include::subdir/_000_about-us.adoc[]
 
-include::subdir/_010_architectural-integrity-of-system.adoc[]
+[data-transition="fade"]
+== About Us
 
-include::subdir/_020_architectural-integrity-of-larger-enterprise.adoc[]
+* *Eoin Woods* is CTO at Endava, a European IT services company.  He is also the author of “Software Systems Architecture”
 
-include::subdir/_030_microservices.adoc[]
+* *Dan Haywood* is an independent consultant & developer specializing in domain driven design.  He is an Apache member and PMC chair for apache.isis
 
-include::subdir/_040_monoliths.adoc[]
+* We met and worked together in the 90s at Sybase, and have (as friends) tracked each other's respective careers ever since
 
-include::subdir/_050_build-vs-buy.adoc[]
 
-include::subdir/_060_user-archetypes.adoc[]
+[NOTE.speaker]
+--
+TODO: let's sprinkle some of the trade-offs throughout, which allows Eoin to put the thing into a larger context
+--
 
-include::subdir/_070_build-the-right-system.adoc[]
 
-include::subdir/_080_ilities.adoc[]
 
-include::subdir/_090_lock-in.adoc[]
 
-include::subdir/_100_in-conclusion.adoc[]
+[.eoin]
+[data-transition="fade"]
+== Setting the scene
 
-include::subdir/_110_learning-more.adoc[]
+The difficulty of applications over the long-term is:
 
+[%step]
+
+* defining and enforcing an architectural style
+* ensuring a long-term coherency
+* ...
+
+
+
+
+[.eoin]
+[data-transition="fade"]
+== Specific challenges
+
+[%step]
+
+* Business logic leaching into adjacent layers
+* New developers, not knowing the idioms
+* ...
+
+
+
+
+[.dan]
+[data-transition="fade"]
+== Apache Isis, and naked objects
+
+* Apache Isis is an implementation of the naked objects pattern
+* Named and popularized by Richard Pawson's
+** read Richard's, Naked Objects PhD thesis
+** external examiner was Trygve Reenskaug
+
+
+[NOTE.speaker]
+--
+TODO: quote Trvyge: what MVC was meant to be, "we never got around to it"
+--
+
+
+
+
+[data-transition="fade"]
+=== a system...
+
+
+[.thumb]
+image::110.png[scaledwidth=75%]
+
+
+[data-transition="fade"]
+=== with layers
+
+
+[.thumb]
+image::120.png[scaledwidth=75%]
+
+
+
+[data-transition="fade"]
+=== generic presentation & persistence
+
+image::130.png[scaledwidth=75%]
+
+
+[data-transition="fade"]
+=== so we can ignore
+
+image::140.png[scaledwidth=75%]
+
+
+
+[data-transition="fade"]
+=== hexagonal architecture
+
+image::150.png[scaledwidth=75%]
+
+
+
+
+[data-transition="fade"]
+=== apache isis
+
+image::160.png[scaledwidth=75%]
+
+
+
+
+[NOTE.speaker]
+====
+eoin might remark: "Why's this useful?  Because we can get a meaningful user-interface "for free".  Valuable because UX/UI is expensive to develop, is difficult to get right, difficult to keep consistent, is a fashion item so the most important bit to ensure that there are no dependencies upon...
+
+Can we see an example of such a UI?
+====
+
+
+
+
+[.dan]
+== An example (Estatio)
+
+TODO: screenshot of Estatio, and link to a screencast...
+
+
+[NOTE.speaker]
+====
+screencast showing the app, and then using IntelliJ to change the app
+
+demonstrate: created at runtime, using annotations
+====
+
+
+[NOTE.speaker]
+====
+dan: intuitive/we find users don't require training if they know the domain... (vs, say, Windows control panel, for example)
+====
+
+
+
+
+[NOTE.speaker]
+====
+eoin: trade-offs, to what extent can this UI be customized?
+====
+
+
+[.dan]
+[data-transition="fade"]
+== Customizing the UI
+
+to create a good UI
+- need a DSL, ie .layout.xml ... like XAML; bs3
+
+
+TODO: screencast of using .layout.xml
+
+
+
+
+[.dan]
+[data-transition="fade"]
+=== Evolving the UI
+
+image::example-apps/TransportDemand.png[width=800%]
+
+
+[.dan]
+[data-transition="fade"]
+=== Evolving the UI
+
+image::example-apps/estatio-2014.png[width=800%]
+
+
+[.dan]
+[data-transition="fade"]
+=== Evolving the UI
+
+image::example-apps/estatio-2015.png[width=800%]
+
+
+[.dan]
+[data-transition="fade"]
+=== Evolving the UI
+
+image::example-apps/todoapp-2016.png[width=800%]
+
+
+
+[NOTE.speaker]
+====
+consistency throughout, hints
+====
+
+
+
+
+
+
+
+[NOTE.speaker]
+====
+eoin: trade-offs, what about other UIs?
+====
+
+
+
+[.dan]
+[data-transition="fade"]
+== Alternative UIs
+
+
+image::example-apps/gesconsultor.png[width=800%]
+
+
+
+[.dan]
+[data-transition="fade"]
+=== user archetypes
+
+image::210.png[scaledwidth=75%]
+
+
+
+[.dan]
+[data-transition="fade"]
+=== REST (Swagger)
+
+TODO: screencast
+
+
+[.dan]
+[data-transition="fade"]
+=== Custom UIs
+
+TODO: contactapp, screencast
+
+
+
+
+[.dan]
+[data-transition="fade"]
+=== NakedObjects.NET UI
+
+generic UIs against the REST API
+
+
+
+[.dan]
+[data-transition="fade"]
+=== Testing "UI"
+
+
+code snippet: WrapperFactory (testing)
+
+
+
+
+
+[.eoin]
+== Architectural Constraints
+
+
+[NOTE.speaker]
+====
+??? perhaps a slide here talking about trade-offs/constraints?
+
+this could leads to the response that really there's not just the technical constraints, but (almost) the belief system of the framework/pattern approach; to whit...
+====
+
+
+
+
+
+[.dan]
+[data-transition="fade"]
+=== Belief/prejudices
+
+* too much emphasis on technical concerns (exhibit A: microservices)
+** conversely, not enough on the domain
+* feedback loop is the most important thing
+** generic UI ... keeps the discussion centred on the domain, not the UI
+
+
+[.dan]
+[data-transition="fade"]
+=== Belief/prejudices (ctd)
+
+* in fact... naked objects at the "systems" level
+** no Excel spreadsheets for the back-office staff
+** no Datawarehouse for the executive
+
+
+
+
+[.dan]
+[data-transition="fade"]
+=== An example exploration
+
+TODO: screencast of github.com/incodehq/colab2-exploration
+
+
+
+[NOTE.speaker]
+====
+dan: anecdote: we take time to choose an icon; builds empathy
+====
+
+
+
+
+[NOTE.speaker]
+====
+eoin: loop back to larger architectural concerns... modularity
+====
+
+
+
+
+[data-transition="fade"]
+[.dan]
+== Modularity of Monoliths
+
+
+image::310.png[scaledwidth=75%]
+
+
+[data-transition="fade"]
+[.dan]
+=== Modules
+
+image::320.png[scaledwidth=75%]
+
+
+
+=== Modularity support
+
+* mixins - move functionality out, composite UI to recombine into a coherent whole for the end-user
+* domain events - coordinate/veto interactions between decoupled parts of the system
+
+
+
+
+[data-transition="fade"]
+[.dan]
+=== Lego blocks
+
+* link:http://www.isisaddons.org/[www.isisaddons.org/]
+* link:http://catalog.incode.org/[catalog.incode.org/]
+
+
+
+
+[NOTE.speaker]
+====
+eoin: let's step further out to the enterprise architecture
+====
+
+
+[data-transition="fade"]
+[.eoin]
+== Enterprise Architecture
+
+* assuming you have an EA function
+* and the EA has agreed what the responsibilities of each BCs
+
+
+
+
+
+[data-transition="fade"]
+[.dan]
+=== Cross-cutting concerns
+
+* For example, each command reified to XML
+** for auditing (cause/effect)
+* Publish onto an event bus, eg Camel
+* Once you have a metamodel in your hand...
+** Another example: security
+
+
+[data-transition="fade"]
+[.dan]
+=== Publishing
+
+image::410.png[scaledwidth=75%]
+
+[data-transition="fade"]
+[.dan]
+=== Publishing
+
+image::420.png[scaledwidth=75%]
+
+[data-transition="fade"]
+[.dan]
+=== Publishing
+
+image::430.png[scaledwidth=75%]
+
+
+[data-transition="fade"]
+[.dan]
+=== Publishing
+
+image::440.png[scaledwidth=75%]
+
+[data-transition="fade"]
+[.dan]
+=== Publishing
+
+image::450.png[scaledwidth=75%]
+
+
+
+
+[NOTE.speaker]
+====
+eoin: ie propogating state between systems "for free"
+====
+
+
+
+
+
+
+
+[data-transition="slide-in"]
+== Learning More
+
+* link:http://github.com/estatio/estatio[github.com/estatio/estatio]
+* link:http://github.com/incodehq/contactapp[github.com/incodehq/contactapp]
+* link:http://github.com/incodehq/contactapp[github.com/incodehq/colab2-exploration]
+* link:http://github.com/isisaddons/isis-app-todoapp[github.com/isisaddons/isis-app-todoapp]
+
+
+[data-transition="fade"]
+== Learning More
+
+* link:http://isis.apache.org[isis.apache.org]
+* link:http://www.isisaddons.org/[www.isisaddons.org/]
+* link:http://catalog.incode.org/[catalog.incode.org/]
+* link:http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf[Richard Pawson's Naked Objects PhD thesis]
+
+* link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
+* link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*
+
+* this slide deck at link:http://github.com/danhaywood/jaxlondon2016[http://github.com/danhaywood/jaxlondon2016]
