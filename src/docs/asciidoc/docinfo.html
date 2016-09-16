@@ -87,8 +87,7 @@ div.backgrounds div.slide-background {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
-div.backgrounds > div.slide-background:first-child,
-div.backgrounds > div.slide-background:last-child {
+div.backgrounds > div.slide-background:first-child {
     background: url(images/jax-london-backgrounds/title.jpg); 
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -141,7 +140,14 @@ border-bottom-color: white; }
 .reveal .controls .navigate-down.enabled:hover {
 border-top-color: white; }
 
+.reveal section img {
+    border: inherit;
+    box-shadow: inherit;
+}
 
-
+#lide-a-system .imageblock img,
+#lide-with-layers .imageblock img {
+    padding-right: 48px; /*horrid hack */
+}
 </style>
 

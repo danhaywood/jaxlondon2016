@@ -26,9 +26,7 @@ Original abstract:
 
 
 
-include::subdir/_000_about-us.adoc[]
-
-[data-transition="fade"]
+[data-transition="slide-in slide-out"]
 == About Us
 
 * *Eoin Woods* is CTO at Endava, a European IT services company.  He is also the author of “Software Systems Architecture”
@@ -47,7 +45,7 @@ TODO: let's sprinkle some of the trade-offs throughout, which allows Eoin to put
 
 
 [.eoin]
-[data-transition="fade"]
+[data-transition="slide-in slide-out"]
 == Setting the scene
 
 The difficulty of applications over the long-term is:
@@ -62,7 +60,7 @@ The difficulty of applications over the long-term is:
 
 
 [.eoin]
-[data-transition="fade"]
+[data-transition="slide-in slide-out"]
 == Specific challenges
 
 [%step]
@@ -75,12 +73,12 @@ The difficulty of applications over the long-term is:
 
 
 [.dan]
-[data-transition="fade"]
-== Apache Isis, and naked objects
+[data-transition="slide-in fade-out"]
+== Apache Isis (and naked objects)
 
-* Apache Isis is an implementation of the naked objects pattern
-* Named and popularized by Richard Pawson's
-** read Richard's, Naked Objects PhD thesis
+* The Apache Isis framework is an implementation of the naked objects pattern
+* Named & developed by Richard&nbsp;Pawson and Rob&nbsp;Matthews
+** further details in Richard's "Naked&nbsp;Objects" PhD thesis
 ** external examiner was Trygve Reenskaug
 
 
@@ -92,7 +90,7 @@ TODO: quote Trvyge: what MVC was meant to be, "we never got around to it"
 
 
 
-[data-transition="fade"]
+[%notitle]
 === a system...
 
 
@@ -100,7 +98,7 @@ TODO: quote Trvyge: what MVC was meant to be, "we never got around to it"
 image::110.png[scaledwidth=75%]
 
 
-[data-transition="fade"]
+[%notitle]
 === with layers
 
 
@@ -109,20 +107,20 @@ image::120.png[scaledwidth=75%]
 
 
 
-[data-transition="fade"]
+[%notitle]
 === generic presentation & persistence
 
 image::130.png[scaledwidth=75%]
 
 
-[data-transition="fade"]
+[%notitle]
 === so we can ignore
 
 image::140.png[scaledwidth=75%]
 
 
 
-[data-transition="fade"]
+[%notitle]
 === hexagonal architecture
 
 image::150.png[scaledwidth=75%]
@@ -130,7 +128,8 @@ image::150.png[scaledwidth=75%]
 
 
 
-[data-transition="fade"]
+[%notitle]
+[data-transition="fade-in slide-out"]
 === apache isis
 
 image::160.png[scaledwidth=75%]
@@ -149,9 +148,11 @@ Can we see an example of such a UI?
 
 
 [.dan]
+[%notitle]
+[data-transition="slide-in slide-out"]
 == An example (Estatio)
 
-TODO: screenshot of Estatio, and link to a screencast...
+(demo of Estatio + IDE)
 
 
 [NOTE.speaker]
@@ -164,58 +165,71 @@ demonstrate: created at runtime, using annotations
 
 [NOTE.speaker]
 ====
-dan: intuitive/we find users don't require training if they know the domain... (vs, say, Windows control panel, for example)
+eoin: trade-offs, getting the UI/UX right is difficult...
+
+(I don't know if this next bit warrants being in, but it was good fine rediscovering all these old screenshots)
 ====
 
 
 
-
-[NOTE.speaker]
-====
-eoin: trade-offs, to what extent can this UI be customized?
-====
+[.dan]
+[data-transition="slide-in fade-out"]
+== Generic UIs are hard...
 
 
 [.dan]
-[data-transition="fade"]
-== Customizing the UI
-
-to create a good UI
-- need a DSL, ie .layout.xml ... like XAML; bs3
-
-
-TODO: screencast of using .layout.xml
-
-
-
+[%notitle]
+[data-transition="fade-in slide-out"]
+=== 2003
+image::history/2003-dnd.png[width=800%]
 
 [.dan]
-[data-transition="fade"]
-=== Evolving the UI
-
-image::example-apps/TransportDemand.png[width=800%]
-
-
-[.dan]
-[data-transition="fade"]
-=== Evolving the UI
-
-image::example-apps/estatio-2014.png[width=800%]
-
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2005
+image::history/2005-dnd.png[width=800%]
 
 [.dan]
-[data-transition="fade"]
-=== Evolving the UI
-
-image::example-apps/estatio-2015.png[width=800%]
-
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2007
+image::history/2007-rcp.png[width=800%]
 
 [.dan]
-[data-transition="fade"]
-=== Evolving the UI
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2009
+image::history/2009-scimpi.png[width=800%]
 
-image::example-apps/todoapp-2016.png[width=800%]
+[.dan]
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2012 wicket
+image::history/2012-wicket.png[width=800%]
 
+[.dan]
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2013
+image::history/2013-TransportDemand.png[width=800%]
+
+[.dan]
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2014
+image::history/2014-estatio.png[width=800%]
+
+[.dan]
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2015
+image::history/2015-estatio.png[width=800%]
+
+[.dan]
+[data-transition="slide-in slide-out"]
+[%notitle]
+=== 2016
+image::history/2016-todoapp.png[width=800%]
 
 
 [NOTE.speaker]
@@ -225,62 +239,99 @@ consistency throughout, hints
 
 
 
+[.eoin]
+[data-transition="slide-in fade-out"]
+== Customizing the UI
+
+[NOTE.speaker]
+====
+eoin: trade-offs, to what extent can this UI be customized?
+====
 
 
+* ...
+* some sort of DSL ?
+* what about other UIs?
+
+
+
+[.dan]
+[%notitle]
+[data-transition="fade-in slide-out"]
+=== Customizing the UI
+
+
+(demo)
 
 
 [NOTE.speaker]
 ====
-eoin: trade-offs, what about other UIs?
+dan:  of using .layout.xml to change around; or using .css; of using gmap3
 ====
 
 
 
-[.dan]
-[data-transition="fade"]
+
+
+
+[.eoin]
+[data-transition="slide-in fade-out"]
 == Alternative UIs
 
+[NOTE.speaker]
+====
+eoin: what about completely different UIs?
+====
 
-image::example-apps/gesconsultor.png[width=800%]
+image::alternatives/gesconsultor.png[width=800%]
 
 
 
 [.dan]
-[data-transition="fade"]
-=== user archetypes
+[%notitle]
+=== Alternative UIs
+
+image::alternatives/gesconsultor.png[width=800%]
+
+
+[NOTE.speaker]
+====
+dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer
+====
+
+
+[.dan]
+=== User Archetypes
 
 image::210.png[scaledwidth=75%]
 
 
 
 [.dan]
-[data-transition="fade"]
+[%notitle]
 === REST (Swagger)
 
-TODO: screencast
+TODO: screenshot
+
 
 
 [.dan]
-[data-transition="fade"]
 === Custom UIs
 
-TODO: contactapp, screencast
+
+(demo)
+
+[NOTE.speaker]
+====
+TODO: screencast of using contactapp (ionic app against REST)
+====
 
 
 
 
 [.dan]
-[data-transition="fade"]
-=== NakedObjects.NET UI
-
-generic UIs against the REST API
-
-
-
-[.dan]
-[data-transition="fade"]
+[data-transition="fade-in slide-out"]
 === Testing "UI"
-
 
 code snippet: WrapperFactory (testing)
 
@@ -289,7 +340,11 @@ code snippet: WrapperFactory (testing)
 
 
 [.eoin]
+[data-transition="slide-in fade-out"]
 == Architectural Constraints
+
+* on the one hand constraints, well, constrain you
+* on the other hand, they are key to preserving the architectural integrity
 
 
 [NOTE.speaker]
@@ -302,42 +357,44 @@ this could leads to the response that really there's not just the technical cons
 
 
 
-
 [.dan]
-[data-transition="fade"]
 === Belief/prejudices
 
-* too much emphasis on technical concerns (exhibit A: microservices)
-** conversely, not enough on the domain
+* too much emphasis on technical concerns
+** exhibit A: microservices
+* conversely, not enough on the domain
 * feedback loop is the most important thing
-** generic UI ... keeps the discussion centred on the domain, not the UI
-
-
-[.dan]
-[data-transition="fade"]
-=== Belief/prejudices (ctd)
-
-* in fact... naked objects at the "systems" level
-** no Excel spreadsheets for the back-office staff
-** no Datawarehouse for the executive
+** a generic UI keeps the discussion centred on the domain, not the UI
 
 
 
 
 [.dan]
-[data-transition="fade"]
+[data-transition="fade-in slide-out"]
 === An example exploration
 
-TODO: screencast of github.com/incodehq/colab2-exploration
+(demo)
 
 
 
 [NOTE.speaker]
 ====
+TODO: screencast of github.com/incodehq/colab2-exploration
+
 dan: anecdote: we take time to choose an icon; builds empathy
 ====
 
 
+
+
+
+[.eoin]
+[data-transition="slide-in fade-out"]
+== Maintainable Monoliths
+
+* ...
+* ...
+* ...
 
 
 [NOTE.speaker]
@@ -347,40 +404,52 @@ eoin: loop back to larger architectural concerns... modularity
 
 
 
-
-[data-transition="fade"]
 [.dan]
-== Modularity of Monoliths
+[%notitle]
+=== modularity of monoliths
 
 
 image::310.png[scaledwidth=75%]
 
 
-[data-transition="fade"]
 [.dan]
+[%notitle]
 === Modules
 
 image::320.png[scaledwidth=75%]
 
 
 
+[.dan]
 === Modularity support
 
-* mixins - move functionality out, composite UI to recombine into a coherent whole for the end-user
-* domain events - coordinate/veto interactions between decoupled parts of the system
+* Mixins
+** move functionality out of domain objects
+** composite UI creates a coherent whole for the end-user
+
+* Domain events
+** coordinate/veto interactions between decoupled parts of the system
 
 
 
-
-[data-transition="fade"]
 [.dan]
-=== Lego blocks
+[data-transition="fade-in slide-out"]
+=== Pre-build lego blocks
 
-* link:http://www.isisaddons.org/[www.isisaddons.org/]
-* link:http://catalog.incode.org/[catalog.incode.org/]
+* Technical modules
+** link:http://www.isisaddons.org/[www.isisaddons.org/]
+
+* Generic (business) sub-domains
+** link:http://catalog.incode.org/[catalog.incode.org/]
 
 
 
+
+
+
+[data-transition="slide-in fade-out"]
+[.eoin]
+== Enterprise Architecture
 
 [NOTE.speaker]
 ====
@@ -388,18 +457,13 @@ eoin: let's step further out to the enterprise architecture
 ====
 
 
-[data-transition="fade"]
-[.eoin]
-== Enterprise Architecture
-
-* assuming you have an EA function
-* and the EA has agreed what the responsibilities of each BCs
+* assuming you have an EA function...
+* ... and the EA has agreed what the responsibilities of each bounded context
+* ...
 
 
 
 
-
-[data-transition="fade"]
 [.dan]
 === Cross-cutting concerns
 
@@ -410,37 +474,39 @@ eoin: let's step further out to the enterprise architecture
 ** Another example: security
 
 
-[data-transition="fade"]
 [.dan]
+[%notitle]
 === Publishing
 
 image::410.png[scaledwidth=75%]
 
-[data-transition="fade"]
 [.dan]
+[%notitle]
 === Publishing
 
 image::420.png[scaledwidth=75%]
 
-[data-transition="fade"]
+
 [.dan]
+[%notitle]
 === Publishing
 
 image::430.png[scaledwidth=75%]
 
 
-[data-transition="fade"]
 [.dan]
+[%notitle]
 === Publishing
 
 image::440.png[scaledwidth=75%]
 
-[data-transition="fade"]
+
 [.dan]
+[%notitle]
+[data-transition="fade-in slide-out"]
 === Publishing
 
 image::450.png[scaledwidth=75%]
-
 
 
 
@@ -450,13 +516,19 @@ eoin: ie propogating state between systems "for free"
 ====
 
 
+[.eoin]
+[data-transition="slide"]
+== Concluding
+
+* ...
+* ...
 
 
 
 
-
-[data-transition="slide-in"]
-== Learning More
+[.dan]
+[data-transition="slide"]
+== Example Apps
 
 * link:http://github.com/estatio/estatio[github.com/estatio/estatio]
 * link:http://github.com/incodehq/contactapp[github.com/incodehq/contactapp]
@@ -464,7 +536,9 @@ eoin: ie propogating state between systems "for free"
 * link:http://github.com/isisaddons/isis-app-todoapp[github.com/isisaddons/isis-app-todoapp]
 
 
-[data-transition="fade"]
+
+[.dan]
+[data-transition="slide"]
 == Learning More
 
 * link:http://isis.apache.org[isis.apache.org]
@@ -475,4 +549,4 @@ eoin: ie propogating state between systems "for free"
 * link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
 * link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*
 
-* this slide deck at link:http://github.com/danhaywood/jaxlondon2016[http://github.com/danhaywood/jaxlondon2016]
+* slide deck at link:http://github.com/danhaywood/jaxlondon2016[github.com/danhaywood/jaxlondon2016]

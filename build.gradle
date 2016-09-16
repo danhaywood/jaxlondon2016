@@ -81,12 +81,12 @@ asciidoctor {
 				'toc': 'left',
 				'icons': 'font',
 				'setanchors': '',
-                'idprefix': 'slide-',
+                'idprefix': 'sslide-',
 				'idseparator': '-',
 				'docinfo1': '',
                 'revealjs_touch': 'true',
 				'revealjs_theme': 'white',
-				'revealjs_transition': 'linear',
+				'revealjs_transition': 'fade',
 				'revealjs_history': 'true',
 				'revealjs_slideNumber': 'true'
 
