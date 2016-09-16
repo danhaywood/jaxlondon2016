@@ -1,7 +1,7 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == How does the framework help build the right system?
 
+[%step]
 * ...
 * ...
 

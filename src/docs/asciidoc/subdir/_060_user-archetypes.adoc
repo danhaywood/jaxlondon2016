@@ -1,9 +1,8 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == What sort of users can use an Apache{nbsp}Isis application?
 
-* ...
-* ...
+[%step]
+* Reference applications (such as Estatio) seem quite complex to a lay person.  Don’t such apps require a lot of training?
 
 
 

@@ -1,7 +1,7 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == Why build rather than buy, anyway?
 
+[%step]
 * The "sweet spot" for an Apache Isis application is one with a rich domain, such as case{nbsp}management, or order{nbsp}fulfillment
 
 * Stepping back, does it even make sense to build such an app?  Why not just buy some off-the-shelf packaged software?

@@ -1,7 +1,11 @@
-= Closing the Architecture / Code{nbsp}Gap
+= Apache Isis - Closing the Architecture/Code&nbsp;Gap
+
 Dan Haywood & Eoin Woods
+
+
 :backend: revealjs
 :revealjs_progress: true
+
 
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../java]

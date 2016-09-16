@@ -1,11 +1,9 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == How does the framework support monoliths?
 
-* even though microservices are where the current hype is, most applications are (and probably should continue to be) monoliths
+[%step]
 
-* how do you keep your monolith applications modular; how do they not become big balls of mud?
-
+* how do you ensure that a monolith application is (and remains) maintainable modular; that it doesn't become big balls of mud?
 
 
 [NOTE.speaker]

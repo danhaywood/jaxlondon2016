@@ -1,8 +1,8 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == How to preserve the architectural integrity of the system?
 
 
+[%step]
 * how do you ensure that domain logic does not leach from one layer into an adjacent layer?
 
 * how do you ensure that its domain logic is easy to find, modify, test?

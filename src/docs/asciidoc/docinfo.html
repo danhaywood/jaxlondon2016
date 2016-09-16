@@ -70,8 +70,10 @@ pre.CodeRay {
 }
 .reveal .slides h2 {
   text-align: center;
-  color: yellow;
+  color: #330084;
 }
+
+
 .reveal a {
     text-decoration: underline dotted;
 }
@@ -79,4 +81,67 @@ pre.CodeRay {
 .reveal #in-code-profiles-code-section pre.CodeRay code {
     overflow: auto;
 }
+
+div.backgrounds div.slide-background {
+    background: url(images/jax-london-backgrounds/slide.jpg); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+div.backgrounds > div.slide-background:first-child,
+div.backgrounds > div.slide-background:last-child {
+    background: url(images/jax-london-backgrounds/title.jpg); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+div.slides > section:first-child h1 {
+    margin-top: 300px;
+    text-transform: inherit;
+    font-size: 2.4em;
+    color: white;
+}
+
+div.slides > section:first-child p {
+    font-size: 1.2em;
+    color: #BCD800;
+}
+
+.reveal .controls {
+    right: inherit;
+}
+
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+border-right-color: #BCD800; }
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+border-left-color: #BCD800;
+}
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+border-bottom-color: #BCD800; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+border-top-color: #BCD800; }
+
+.reveal .controls .navigate-left.enabled:hover {
+border-right-color: white; }
+
+.reveal .controls .navigate-right.enabled:hover {
+border-left-color: white;
+}
+
+.reveal .controls .navigate-up.enabled:hover {
+border-bottom-color: white; }
+
+.reveal .controls .navigate-down.enabled:hover {
+border-top-color: white; }
+
+
+
 </style>
+

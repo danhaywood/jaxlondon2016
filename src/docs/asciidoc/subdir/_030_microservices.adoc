@@ -1,10 +1,10 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == How does the framework support microservices?
 
+[%step]
 * the current architectural vogue for building systems is, of course, microservices.
 
-* can an Apache Isis app be a microservice?
+* can Apache Isis be used to create a microservice?
 
 
 [NOTE.speaker]
@@ -21,7 +21,7 @@ for Eoin to ask
 
 * to simplify development we *integrate with Swagger*
 ** swagger-ui
-** a maven plugin generates the swagger spec for your build{nbsp}pipeline
+** a maven plugin can generates the swagger spec for you
 
 * the automatic UI also gives your back-end staff the ability to administer the service
 

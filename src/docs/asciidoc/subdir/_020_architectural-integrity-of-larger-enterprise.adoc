@@ -1,7 +1,7 @@
 [data-transition="slide-in fade-out"]
-[data-background="#243"]
 == How to ensure the application plays well in the larger enterprise?
 
+[%step]
 * how do you ensure that the boundaries of the bounded contexts are not eroded over time?
 
 
