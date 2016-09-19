@@ -32,7 +32,7 @@ Original abstract:
 
 * *Dan Haywood* is an independent consultant & developer specializing in domain driven design.  He is an Apache member and PMC chair for apache.isis
 
-* We met and worked together in the 90s at Sybase, and have (as friends) tracked each other's respective careers ever since
+* We met and worked together in the 90s at Sybase, and have (as friends) tracked each other's respective careers ever since.
 
 
 [NOTE.speaker]
@@ -172,9 +172,10 @@ eoin: can we see an example of such a generic UI?
 
 
 [.dan]
-=== Generic UIs are hard...
+=== Generic UIs are "good enough" for many applications
 
-* it's an ongoing journey...
+* ... though it has, admittedly, been a journey to get them to that level!
+
 
 
 [NOTE.speaker]
@@ -231,7 +232,7 @@ image::history/2016-todoapp.png[width=960px]
 
 
 [.dan]
-=== An example: Estatio
+== An example: Estatio
 
 * *_Estatio_* is an invoicing application for tenants within a shopping centre
 * Developed for Eurocommercial Properties, currently deployed to Italy and France
@@ -344,9 +345,11 @@ image::user-archetypes/210.png[width=960px]
 
 
 [.dan]
+[%notitle]
 === REST (Swagger)
 
-TODO: screenshot for contactapp
+
+image::custom-ui/swagger.png[width=960px]
 
 
 
@@ -368,8 +371,19 @@ TODO: screencast of using contactapp (ionic app against REST)
 [.dan]
 === Testing "UI"
 
-TODO: code snippet: WrapperFactory (testing)
-
+[source,java]
+----
+@Test
+public void cannotCompleteIfAlreadyCompleted()
+                                        throws Exception {
+    // given
+    toDoItem.setComplete(true);
+    // expect
+    expectedExceptions.expectMessage("Already completed");
+    // when
+    wrap(toDoItem).completed();
+}
+----
 
 
 
@@ -424,6 +438,8 @@ image::architecture-constraints/180.png[width=960px]
 
 [%step]
 
+* ...
+* ...
 * ...
 
 
@@ -502,14 +518,14 @@ eoin: considering larger architectural concerns... modularity
 === monoliths are maintainable if...
 
 
-image::modules/310.png[scaledwidth=75%]
+image::modules/310.png[width=960px]
 
 
 [.dan]
 [%notitle]
 === ... decomposed into modules
 
-image::modules/320.png[scaledwidth=75%]
+image::modules/320.png[width=960px]
 
 
 
@@ -528,15 +544,67 @@ image::modules/320.png[scaledwidth=75%]
 [.dan]
 === Mixins
 
-TODO: screenshots/code fragments
+image::modules/2016-todoapp-with-mixins.png[width=960px]
 
+
+[.dan]
+=== Mixins
+
+[source,java]
+----
+@Mixin
+public class ToDoItem_next {
+    private final ToDoItem toDoItem;
+    public ToDoItem_next(final ToDoItem toDoItem) { ... }
+
+    public ToDoItem $$() { ... }
+}
+----
 
 
 
 [.dan]
 === Domain events
 
-TODO: screenshots/code fragments
+[source,java]
+----
+public static class CompletedDomainEvent
+                    extends ToDoItem.ActionDomainEvent {}
+@Action(
+    domainEvent = CompletedDomainEvent.class
+)
+public ToDoItem completed() {
+    setComplete(true);
+}
+----
+
+
+[.dan]
+[%notitle]
+=== Domain events
+
+[source,java]
+----
+@DomainService
+public class ItemCompletedSubscriber {
+    @Subscribe
+    public void on(ToDoItem.CompletedDomainEvent ev) {
+        ToDoItem item = ev.getSource();
+        switch(ev.getEventPhase()) {
+            case HIDE:      // ev.hide();
+                break;
+            case DISABLE:   // ev.disable(...);
+                break;
+            case VALIDATE:  // ev.invalidate(...);
+                break;
+            case EXECUTING: // ...
+                break;
+            case EXECUTED:  // ...
+                break;
+        }
+    }
+}
+----
 
 
 
@@ -545,10 +613,10 @@ TODO: screenshots/code fragments
 === Pre-built modules
 
 * Technical modules
-** link:http://www.isisaddons.org[www.isisaddons.org/]
+** link:http://www.isisaddons.org[www.isisaddons.org]
 
 * Generic (business) sub-domains
-** link:http://catalog.incode.org[catalog.incode.org/]
+** link:http://catalog.incode.org[catalog.incode.org]
 
 
 
@@ -585,7 +653,57 @@ eoin: let's step further out to the enterprise architecture
 [%notitle]
 === Inferred commands
 
-TODO: code example here
+[source,java]
+----
+public static class CompletedDomainEvent
+                    extends ToDoItem.ActionDomainEvent {}
+@Action(
+    domainEvent = CompletedDomainEvent.class,
+    publishing = Publishing.ENABLED
+)
+public ToDoItem completed() {
+    setComplete(true);
+}
+----
+
+[.dan .small]
+[%notitle]
+=== published xml
+
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ixn:interactionDto xmlns:com="http://isis.apache.org/schema/common"
+                    xmlns:cmd="http://isis.apache.org/schema/cmd"
+                    xmlns:ixn="http://isis.apache.org/schema/ixn">
+  <ixn:transactionId>8236d616-6fde-45d9-9526-cb7a50b4bd88</ixn:transactionId>
+  <ixn:execution xsi:type="ixn:actionInvocationDto"
+       interactionType="action_invocation"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ixn:sequence>0</ixn:sequence>
+    <ixn:target type="todo.ToDoItem" id="0"/>
+    <ixn:memberIdentifier>todoapp.dom.todoitem.ToDoItem#completed()</ixn:memberIdentifier>
+    <ixn:parameters/>
+    <ixn:returned type="reference" null="false">
+      <com:reference type="todo.ToDoItem" id="0"/>
+    </ixn:returned>
+    <ixn:user>todoapp-admin</ixn:user>
+    <ixn:title>todo.ToDoItem:0: completed()</ixn:title>
+    <ixn:metrics>
+      <ixn:timings>
+        <com:startedAt>2016-09-19T20:36:03.414+01:00</com:startedAt>
+        <com:completedAt>2016-09-19T20:36:03.418+01:00</com:completedAt>
+      </ixn:timings>
+      <ixn:objectCounts>
+        <ixn:loaded before="3" after="3"/>
+        <ixn:dirtied before="0" after="1"/>
+      </ixn:objectCounts>
+    </ixn:metrics>
+  </ixn:execution>
+</ixn:interactionDto>
+----
+
 
 
 [.dan]
@@ -667,8 +785,8 @@ eoin: ie propogating state between systems "for free"
 == Learning More
 
 * link:http://isis.apache.org[isis.apache.org]
-* link:http://www.isisaddons.org[www.isisaddons.org/]
-* link:http://catalog.incode.org[catalog.incode.org/]
+* link:http://www.isisaddons.org[www.isisaddons.org]
+* link:http://catalog.incode.org[catalog.incode.org]
 
 * link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*
 * link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
