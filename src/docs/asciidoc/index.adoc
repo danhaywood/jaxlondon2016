@@ -354,16 +354,11 @@ image::custom-ui/swagger.png[width=960px]
 
 
 [.dan]
+[%notitle]
 === Example of a custom UI: contactapp
 
-TODO: screencast of contactapp
+link:images/alternatives/contactapp-1.mp4[example of a custom UI: contactapp]
 
-(demo)
-
-[NOTE.speaker]
-====
-TODO: screencast of using contactapp (ionic app against REST)
-====
 
 
 
@@ -371,17 +366,30 @@ TODO: screencast of using contactapp (ionic app against REST)
 [.dan]
 === Testing "UI"
 
+* the framework provides a small testing framework that emulates the UI
+
+* link:images/alternatives/contactapp-2.mp4[example functionality within contactapp]
+
+
+
+
+[.dan]
+[%notitle]
+=== Testing "UI"
+
 [source,java]
 ----
 @Test
-public void cannotCompleteIfAlreadyCompleted()
-                                        throws Exception {
-    // given
-    toDoItem.setComplete(true);
-    // expect
-    expectedExceptions.expectMessage("Already completed");
-    // when
-    wrap(toDoItem).completed();
+public void name_already_in_use_by_contact() throws Exception {
+  // given
+  final String existingName =
+                        fs.getContacts().get(1).getName();
+  // expect
+  thrown.expect(InvalidException.class);
+  thrown.expectMessage("Reason: " +
+        "This name is already in use by another contact");
+  // when
+  wrap(this.contact).edit(existingName, null, null, null);
 }
 ----
 
@@ -467,7 +475,7 @@ image::architecture-constraints/180.png[width=960px]
 
 
 [.dan]
-=== Belief/prejudices
+=== Beliefs/prejudices
 
 * Too much emphasis on technical concerns
 ** exhibit A: microservices
@@ -479,17 +487,17 @@ image::architecture-constraints/180.png[width=960px]
 
 
 [.dan]
+[%notitle]
 === An example exploration
 
-(demo)
+
+link:images/feedback-loop/colab2.mp4[example of feedback loops: colab2-exploration]
 
 
 
 [NOTE.speaker]
 ====
-TODO: screencast of github.com/incodehq/colab2-exploration
-
-dan: anecdote: we take time to choose an icon; builds empathy
+dan: fixture scripts; choosing titles and icons ...
 ====
 
 
