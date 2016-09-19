@@ -26,7 +26,6 @@ Original abstract:
 
 
 
-[data-transition="slide-in slide-out"]
 == About Us
 
 * *Eoin Woods* is CTO at Endava, a European IT services company.  He is also the author of “Software Systems Architecture”
@@ -45,7 +44,6 @@ TODO: let's sprinkle some of the trade-offs throughout, which allows Eoin to put
 
 
 [.eoin]
-[data-transition="slide-in slide-out"]
 == Setting the scene
 
 The difficulty of applications over the long-term is:
@@ -60,7 +58,6 @@ The difficulty of applications over the long-term is:
 
 
 [.eoin]
-[data-transition="slide-in slide-out"]
 == Specific challenges
 
 [%step]
@@ -73,7 +70,6 @@ The difficulty of applications over the long-term is:
 
 
 [.dan]
-[data-transition="slide-in fade-out"]
 == Apache Isis (and naked objects)
 
 * The Apache Isis framework is an implementation of the naked objects pattern
@@ -90,69 +86,163 @@ TODO: quote Trvyge: what MVC was meant to be, "we never got around to it"
 
 
 
+[.dan]
 [%notitle]
 === a system...
 
 
 [.thumb]
-image::110.png[scaledwidth=75%]
+image::what-is-nakedobjects/110.png[width=960px]
 
 
+[.dan]
 [%notitle]
 === with layers
 
 
 [.thumb]
-image::120.png[scaledwidth=75%]
+image::what-is-nakedobjects/120.png[width=960px]
 
 
 
+[.dan]
 [%notitle]
 === generic presentation & persistence
 
-image::130.png[scaledwidth=75%]
+image::what-is-nakedobjects/130.png[width=960px]
 
 
+[.dan]
 [%notitle]
 === so we can ignore
 
-image::140.png[scaledwidth=75%]
+image::what-is-nakedobjects/140.png[width=960px]
 
 
 
+[.dan]
 [%notitle]
 === hexagonal architecture
 
-image::150.png[scaledwidth=75%]
-
-
-
-
-[%notitle]
-[data-transition="fade-in slide-out"]
-=== apache isis
-
-image::160.png[scaledwidth=75%]
-
-
-
-
-[NOTE.speaker]
-====
-eoin might remark: "Why's this useful?  Because we can get a meaningful user-interface "for free".  Valuable because UX/UI is expensive to develop, is difficult to get right, difficult to keep consistent, is a fashion item so the most important bit to ensure that there are no dependencies upon...
-
-Can we see an example of such a UI?
-====
+image::what-is-nakedobjects/150.png[width=960px]
 
 
 
 
 [.dan]
 [%notitle]
-[data-transition="slide-in slide-out"]
-== An example (Estatio)
+=== with viewers and object stores
 
-(demo of Estatio + IDE)
+image::what-is-nakedobjects/160.png[width=960px]
+
+
+
+
+
+[.dan]
+=== A metaphor: the incredible machine
+
+
+[.thumb]
+image::what-is-nakedobjects/incredible-machine.png[width=650px]
+
+
+
+
+[.eoin]
+== Generic UI/UX
+
+
+[%step]
+
+* ...
+* ...
+
+[NOTE.speaker]
+====
+some discussion on why a generic UI might be useful/beneficial.
+
+Things eoin mentioned last Friday included: "Why's this useful?  Because we can get a meaningful user-interface "for free".  Valuable because UX/UI is expensive to develop, is difficult to get right, difficult to keep consistent, is a fashion item so the most important bit to ensure that there are no dependencies upon...
+
+also worth mentioning: provides is consistency throughout, with new features automatically available everywhere (eg hint support, icons via regex, calendars/maps)
+
+eoin: can we see an example of such a generic UI?
+====
+
+
+
+[.dan]
+=== Generic UIs are hard...
+
+* it's an ongoing journey...
+
+
+[NOTE.speaker]
+====
+dan: the irony of writing a naked objects framework if one is more interested in the domain than in the UI...
+====
+
+
+[.dan]
+[%notitle]
+=== 2005
+image::history/2005-dnd.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2006
+image::history/2006-dsfa.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2007
+image::history/2007-rcp.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2009
+image::history/2009-scimpi.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2012 wicket
+image::history/2012-wicket.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2013
+image::history/2013-TransportDemand.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2014
+image::history/2014-estatio.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2015
+image::history/2015-estatio.png[width=960px]
+
+[.dan]
+[%notitle]
+=== 2016
+image::history/2016-todoapp.png[width=960px]
+
+
+
+[.dan]
+=== An example: Estatio
+
+* *_Estatio_* is an invoicing application for tenants within a shopping centre
+* Developed for Eurocommercial Properties, currently deployed to Italy and France
+* The code also happens to be open source (on github)
+
+
+[.dan]
+[%notitle]
+=== ... demo ...
+
+(demo)
 
 
 [NOTE.speaker]
@@ -163,135 +253,79 @@ demonstrate: created at runtime, using annotations
 ====
 
 
-[NOTE.speaker]
-====
-eoin: trade-offs, getting the UI/UX right is difficult...
-
-(I don't know if this next bit warrants being in, but it was good fine rediscovering all these old screenshots)
-====
-
-
-
-[.dan]
-[data-transition="slide-in fade-out"]
-== Generic UIs are hard...
-
-
-[.dan]
-[%notitle]
-[data-transition="fade-in slide-out"]
-=== 2003
-image::history/2003-dnd.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2005
-image::history/2005-dnd.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2007
-image::history/2007-rcp.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2009
-image::history/2009-scimpi.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2012 wicket
-image::history/2012-wicket.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2013
-image::history/2013-TransportDemand.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2014
-image::history/2014-estatio.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2015
-image::history/2015-estatio.png[width=800%]
-
-[.dan]
-[data-transition="slide-in slide-out"]
-[%notitle]
-=== 2016
-image::history/2016-todoapp.png[width=800%]
-
-
-[NOTE.speaker]
-====
-consistency throughout, hints
-====
-
 
 
 [.eoin]
-[data-transition="slide-in fade-out"]
 == Customizing the UI
+
+
+[%step]
+
+* ...
+* ...
+
 
 [NOTE.speaker]
 ====
 eoin: trade-offs, to what extent can this UI be customized?
+
+Suggest hold back the question on alternative UIs to next section
 ====
 
 
-* ...
-* some sort of DSL ?
-* what about other UIs?
+[.dan]
+=== Customizing the UI
+
+
+* Use annotations, provide UI hints
+** eg `@Action` vs `@ActionLayout`
+* Optional `.layout.xml`
+** basically a DSL, modelled on Bootstrap
+* CSS
+** classes and Ids generated from the metamodel
+* Plugins to render maps, calendars etc.
+
 
 
 
 [.dan]
 [%notitle]
-[data-transition="fade-in slide-out"]
-=== Customizing the UI
-
+=== ... demo ...
 
 (demo)
 
 
 [NOTE.speaker]
 ====
-dan:  of using .layout.xml to change around; or using .css; of using gmap3
+dan:  of using `.layout.xml` to change around; or using `.css`; of using gmap3
 ====
-
-
 
 
 
 
 [.eoin]
-[data-transition="slide-in fade-out"]
 == Alternative UIs
+
+
+[%step]
+
+* ...
+* ...
+
 
 [NOTE.speaker]
 ====
-eoin: what about completely different UIs?
+eoin: and what about completely different UIs?
 ====
 
-image::alternatives/gesconsultor.png[width=800%]
 
 
 
 [.dan]
-[%notitle]
-=== Alternative UIs
+=== GES Consultor
 
-image::alternatives/gesconsultor.png[width=800%]
+image::alternatives/gesconsultor.png[width=960px]
+
 
 
 [NOTE.speaker]
@@ -300,24 +334,26 @@ dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer
 ====
 
 
+
 [.dan]
 === User Archetypes
 
-image::210.png[scaledwidth=75%]
+image::user-archetypes/210.png[width=960px]
+
 
 
 
 [.dan]
-[%notitle]
 === REST (Swagger)
 
-TODO: screenshot
+TODO: screenshot for contactapp
 
 
 
 [.dan]
-=== Custom UIs
+=== Example of a custom UI: contactapp
 
+TODO: screencast of contactapp
 
 (demo)
 
@@ -330,29 +366,86 @@ TODO: screencast of using contactapp (ionic app against REST)
 
 
 [.dan]
-[data-transition="fade-in slide-out"]
 === Testing "UI"
 
-code snippet: WrapperFactory (testing)
+TODO: code snippet: WrapperFactory (testing)
 
 
 
 
 
 [.eoin]
-[data-transition="slide-in fade-out"]
 == Architectural Constraints
+
+[%step]
 
 * on the one hand constraints, well, constrain you
 * on the other hand, they are key to preserving the architectural integrity
+* ...
+
+
+
+
+[.dan]
+[%notitle]
+=== hexagonal architecture
+
+image::what-is-nakedobjects/150.png[width=960px]
+
+
+
+
+
+
+[.dan]
+[%notitle]
+=== firewalls
+
+image::architecture-constraints/180.png[width=960px]
+
+
+
+
+
+[.dan]
+=== Metamodel validators
+
+* Used by framework itself
+** eg to enforce naming conventions
+* Extensible for other application-specific use cases
+* Metamodel itself is extensible
+** Extension object pattern
+
+
+
+
+[.eoin]
+== Coupling to the framework?
+
+[%step]
+
+* ...
 
 
 [NOTE.speaker]
 ====
-??? perhaps a slide here talking about trade-offs/constraints?
+.... the idea of this section (if there's time) is to address the point that when you use a framework there's always some sort of "coupling"; either technical, or (more interestingly) in terms of having the same set of values/beliefs as the framework's authors
 
-this could leads to the response that really there's not just the technical constraints, but (almost) the belief system of the framework/pattern approach; to whit...
+... latter provides an opportunity to do a demo on feedback loops/explorations
 ====
+
+
+
+
+[.dan]
+=== Decoupling from the framework
+
+[%step]
+
+* Apache Isis is a framework, not a library
+** Domain objects have a compiled-time coupling to the "applib" (annotations), but that's about all
+* Could deploy an Apache Isis app on Spring, for example
+** ... or any other framework providing runtime support for dependency injection and an ORM
 
 
 
@@ -360,17 +453,16 @@ this could leads to the response that really there's not just the technical cons
 [.dan]
 === Belief/prejudices
 
-* too much emphasis on technical concerns
+* Too much emphasis on technical concerns
 ** exhibit A: microservices
-* conversely, not enough on the domain
-* feedback loop is the most important thing
+* Conversely, not enough on the domain
+* Feedback loop is the most important thing
 ** a generic UI keeps the discussion centred on the domain, not the UI
 
 
 
 
 [.dan]
-[data-transition="fade-in slide-out"]
 === An example exploration
 
 (demo)
@@ -389,8 +481,9 @@ dan: anecdote: we take time to choose an icon; builds empathy
 
 
 [.eoin]
-[data-transition="slide-in fade-out"]
 == Maintainable Monoliths
+
+[%step]
 
 * ...
 * ...
@@ -399,29 +492,29 @@ dan: anecdote: we take time to choose an icon; builds empathy
 
 [NOTE.speaker]
 ====
-eoin: loop back to larger architectural concerns... modularity
+eoin: considering larger architectural concerns... modularity
 ====
 
 
 
 [.dan]
 [%notitle]
-=== modularity of monoliths
+=== monoliths are maintainable if...
 
 
-image::310.png[scaledwidth=75%]
+image::modules/310.png[scaledwidth=75%]
 
 
 [.dan]
 [%notitle]
-=== Modules
+=== ... decomposed into modules
 
-image::320.png[scaledwidth=75%]
+image::modules/320.png[scaledwidth=75%]
 
 
 
 [.dan]
-=== Modularity support
+=== Modularity support in Apache Isis
 
 * Mixins
 ** move functionality out of domain objects
@@ -433,23 +526,44 @@ image::320.png[scaledwidth=75%]
 
 
 [.dan]
-[data-transition="fade-in slide-out"]
-=== Pre-build lego blocks
+=== Mixins
+
+TODO: screenshots/code fragments
+
+
+
+
+[.dan]
+=== Domain events
+
+TODO: screenshots/code fragments
+
+
+
+
+[.dan]
+=== Pre-built modules
 
 * Technical modules
-** link:http://www.isisaddons.org/[www.isisaddons.org/]
+** link:http://www.isisaddons.org[www.isisaddons.org/]
 
 * Generic (business) sub-domains
-** link:http://catalog.incode.org/[catalog.incode.org/]
+** link:http://catalog.incode.org[catalog.incode.org/]
 
 
 
 
 
-
-[data-transition="slide-in fade-out"]
 [.eoin]
 == Enterprise Architecture
+
+
+[%step]
+
+* assuming you have an EA function...
+* ... and the EA has agreed what the responsibilities of each bounded context
+* ...
+
 
 [NOTE.speaker]
 ====
@@ -457,56 +571,77 @@ eoin: let's step further out to the enterprise architecture
 ====
 
 
-* assuming you have an EA function...
-* ... and the EA has agreed what the responsibilities of each bounded context
-* ...
+
+[.dan]
+=== Inferred commands
+
+* Each interaction (action invocation or property edit) can be reified into XML
+** published onto an event bus, eg Camel
+* can be correlated with audit trail
+** ie cause/effect
+
+
+[.dan]
+[%notitle]
+=== Inferred commands
+
+TODO: code example here
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/410.png[width=960px]
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/420.png[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/430.png[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/440.png[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/450.png[width=960px]
 
 
 
 
 [.dan]
-=== Cross-cutting concerns
+=== Other examples
 
-* For example, each command reified to XML
-** for auditing (cause/effect)
-* Publish onto an event bus, eg Camel
+* Security
+* i18n
+* Swagger generation
 * Once you have a metamodel in your hand...
-** Another example: security
 
 
-[.dan]
-[%notitle]
-=== Publishing
-
-image::410.png[scaledwidth=75%]
-
-[.dan]
-[%notitle]
-=== Publishing
-
-image::420.png[scaledwidth=75%]
 
 
-[.dan]
-[%notitle]
-=== Publishing
+[.eoin]
+== Concluding
 
-image::430.png[scaledwidth=75%]
+[%step]
 
-
-[.dan]
-[%notitle]
-=== Publishing
-
-image::440.png[scaledwidth=75%]
-
-
-[.dan]
-[%notitle]
-[data-transition="fade-in slide-out"]
-=== Publishing
-
-image::450.png[scaledwidth=75%]
+* ...
+* ...
 
 
 
@@ -516,18 +651,9 @@ eoin: ie propogating state between systems "for free"
 ====
 
 
-[.eoin]
-[data-transition="slide"]
-== Concluding
-
-* ...
-* ...
-
-
 
 
 [.dan]
-[data-transition="slide"]
 == Example Apps
 
 * link:http://github.com/estatio/estatio[github.com/estatio/estatio]
@@ -538,15 +664,14 @@ eoin: ie propogating state between systems "for free"
 
 
 [.dan]
-[data-transition="slide"]
 == Learning More
 
 * link:http://isis.apache.org[isis.apache.org]
-* link:http://www.isisaddons.org/[www.isisaddons.org/]
-* link:http://catalog.incode.org/[catalog.incode.org/]
-* link:http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf[Richard Pawson's Naked Objects PhD thesis]
+* link:http://www.isisaddons.org[www.isisaddons.org/]
+* link:http://catalog.incode.org[catalog.incode.org/]
 
-* link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
 * link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*
+* link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
 
+* link:http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf[Richard Pawson's Naked Objects PhD thesis]
 * slide deck at link:http://github.com/danhaywood/jaxlondon2016[github.com/danhaywood/jaxlondon2016]
