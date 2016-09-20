@@ -112,6 +112,9 @@ div.slides > section:first-child p {
 
 .reveal .controls {
     right: inherit;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
 }
 
 
@@ -162,3 +165,24 @@ border-top-color: white; }
 }
 </style>
 
+
+<script>
+    window.addEventListener("mousedown", handleClick, false);
+    window.addEventListener("contextMenu", preventEventDefault, false);
+
+    function preventEventDefault(e) {
+        if(event.shiftKey) {
+            return;
+        }
+        e.preventDefault();
+    }
+
+    function handleClick(e) {
+        if(event.shiftKey) {
+            return;
+        }
+        preventEventDefault(e);
+        if(e.button === 0) Reveal.next();
+        if(e.button === 2) Reveal.prev();
+    }
+</script>

@@ -350,7 +350,6 @@ link:images/alternatives/contactapp-1.mp4[example of a custom UI: contactapp]
 
 
 
-
 [.dan]
 === Testing "UI"
 
@@ -528,13 +527,13 @@ image::modules/320.png[width=960px]
 [.dan]
 === Modularity support in Apache Isis
 
-* Mixins
-** move functionality out of domain objects
+* **__Mixin__**s move functionality out of domain objects
 ** composite UI creates a coherent whole for the end-user
 
-* Domain events
-** coordinate/veto interactions between decoupled parts of the system
+* **__Domain event__**s coordinate/veto interactions between different modules within the system
 
+* **__URN__**s, enabling polymorphic associations
+** "table of two halves" pattern
 
 
 [.dan]
