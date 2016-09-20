@@ -243,15 +243,8 @@ image::history/2016-todoapp.png[width=960px]
 [%notitle]
 === ... demo ...
 
-(demo)
 
-
-[NOTE.speaker]
-====
-screencast showing the app, and then using IntelliJ to change the app
-
-demonstrate: created at runtime, using annotations
-====
+link:images/rad/estatio-resetDates.mp4[demo: UI derived from domain model]
 
 
 
@@ -293,13 +286,8 @@ Suggest hold back the question on alternative UIs to next section
 [%notitle]
 === ... demo ...
 
-(demo)
+link:images/rad/estatio-layout.mp4[demo: customizing the UI using `.layout.xml`]
 
-
-[NOTE.speaker]
-====
-dan:  of using `.layout.xml` to change around; or using `.css`; of using gmap3
-====
 
 
 
