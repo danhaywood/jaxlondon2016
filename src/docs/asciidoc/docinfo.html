@@ -171,9 +171,6 @@ border-top-color: white; }
     window.addEventListener("contextMenu", preventEventDefault, false);
 
     function preventEventDefault(e) {
-        if(event.shiftKey) {
-            return;
-        }
         e.preventDefault();
     }
 
