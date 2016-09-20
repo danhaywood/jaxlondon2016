@@ -1,9 +1,0 @@
-[data-transition="slide-in fade-out"]
-== In conclusion
-
-[%step]
-* ...
-* ...
-
-
-
