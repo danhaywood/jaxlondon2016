@@ -30,7 +30,7 @@ Original abstract:
 
 * *Eoin Woods* is CTO at Endava, a European IT services company.  He is also the author of “Software Systems Architecture”
 
-* *Dan Haywood* is an independent consultant & developer specializing in domain driven design.  He is an Apache member and PMC chair for apache.isis
+* *Dan Haywood* is an independent consultant & developer specializing in domain driven design.  He is an Apache member and PMC chair for Apache Isis
 
 * We met and worked together in the 90s at Sybase, and have (as friends) tracked each other's respective careers ever since.
 
