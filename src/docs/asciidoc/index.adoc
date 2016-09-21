@@ -404,7 +404,7 @@ public void name_already_in_use_by_contact() throws Exception {
 [%notitle]
 === hexagonal architecture
 
-image::what-is-nakedobjects/150.png[width=960px]
+image::what-is-nakedobjects/150.PNG[width=960px]
 
 
 
@@ -525,7 +525,7 @@ image::modules/310.PNG[width=960px]
 [%notitle]
 === ... decomposed into modules
 
-image::modules/320.PNG[width=960px]
+image::modules/320.png[width=960px]
 
 
 
