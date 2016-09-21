@@ -332,7 +332,7 @@ dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer
 [.dan]
 === User Archetypes
 
-image::user-archetypes/210.png[width=960px]
+image::alternatives/210.png[width=960px]
 
 
 
@@ -342,7 +342,7 @@ image::user-archetypes/210.png[width=960px]
 === REST (Swagger)
 
 
-image::custom-ui/swagger.png[width=960px]
+image::alternatives/swagger.png[width=960px]
 
 
 
