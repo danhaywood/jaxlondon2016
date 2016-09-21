@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="author" content="Dan Haywood &amp; Eoin Woods" /><title>Closing the Architecture / Code&#160;Gap</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><style>/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>Apache Isis - Closing the Architecture/Code&nbsp;Gap</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><style>/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
 .CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
 .CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
@@ -102,7 +102,7 @@ p>code {
     color: chocolate;
 }
 .CodeRay .reserved, .CodeRay .keyword {
-    color: aquamarine;
+    color: darkorange;
 }
 
 .CodeRay .key {
@@ -113,11 +113,11 @@ p>code {
 }
 .CodeRay .annotation,
 .CodeRay .predefined-type {
-    color: bisque;
+    color: firebrick;
 }
 pre.CodeRay {
     font-size: 0.70em;
-    background-color: #444;
+    background-color: ghostwhite;
     padding: 10px;
 }
 
@@ -158,8 +158,10 @@ pre.CodeRay {
 }
 .reveal .slides h2 {
   text-align: center;
-  color: yellow;
+  color: #330084;
 }
+
+
 .reveal a {
     text-decoration: underline dotted;
 }
@@ -167,58 +169,213 @@ pre.CodeRay {
 .reveal #in-code-profiles-code-section pre.CodeRay code {
     overflow: auto;
 }
-</style></head><body><div class="reveal"><div class="slides"><section><h1>Closing the Architecture / Code&#160;Gap</h1><p><small>Dan Haywood &amp; Eoin Woods</small></p></section><section id="about-us"><h2>About Us</h2><div class="ulist"><ul><li><p>Eoin Woods</p></li><li><p>Dan Haywood</p></li></ul></div>
-<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa fa-lightbulb-o" title="Tip"></i></td><td class="content"><div class="paragraph"><p>note to Eoin:</p></div>
-<div class="ulist"><ul><li><p>this is draft and all is up for revision/deletion/addition etc etc.  there is too much material here, I think</p></li><li><p>not sure if we&#8217;d be able to use this animated slide deck, or if there&#8217;s a special template we need to use instead.  But I&#8217;ve created the deck anyway though cos (a) easier to version control and (b) is more enjoyable/rewarding to do.  Can always port to PPT/Keynote later if necessary</p></li><li><p>press <strong>Esc</strong> for overview, arrow keys, <strong>s</strong> for speaker notes</p></li></ul></div></td></tr></table></div>
+
+div.backgrounds div.slide-background {
+    background: url(images/jax-london-backgrounds/slide.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+div.backgrounds div.slide-background.eoin {
+    background: url(images/jax-london-backgrounds/slide-eoin.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+div.backgrounds > div.slide-background:first-child {
+    background: url(images/jax-london-backgrounds/title.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+div.slides > section:first-child h1 {
+    margin-top: 300px;
+    text-transform: inherit;
+    font-size: 2.4em;
+    color: white;
+}
+
+div.slides > section:first-child p {
+    font-size: 1.2em;
+    color: #BCD800;
+}
+
+.reveal .controls {
+    right: inherit;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+}
+
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+border-right-color: #BCD800; }
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+border-left-color: #BCD800;
+}
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+border-bottom-color: #BCD800; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+border-top-color: #BCD800; }
+
+.reveal .controls .navigate-left.enabled:hover {
+border-right-color: white; }
+
+.reveal .controls .navigate-right.enabled:hover {
+border-left-color: white;
+}
+
+.reveal .controls .navigate-up.enabled:hover {
+border-bottom-color: white; }
+
+.reveal .controls .navigate-down.enabled:hover {
+border-top-color: white; }
+
+.reveal section img {
+    border: inherit;
+    box-shadow: inherit;
+}
+
+#slide-generic-presentation-persistence .imageblock img,
+#slide-so-we-can-ignore .imageblock img,
+#slide-hexagonal-architecture .imageblock img,
+#slide-with-viewers-and-object-stores .imageblock img {
+    padding-left: 24px; /*horrid hack */
+}
+
+#slide-published-xml pre.CodeRay {
+    font-size: 0.50em;
+}
+</style>
+
+
+<script>
+    window.addEventListener("mousedown", handleClick, false);
+    window.addEventListener("contextMenu", preventEventDefault, false);
+
+    function preventEventDefault(e) {
+        e.preventDefault();
+    }
+
+    function handleClick(e) {
+        if(event.shiftKey) {
+            return;
+        }
+        preventEventDefault(e);
+        if(e.button === 0) Reveal.next();
+        if(e.button === 2) Reveal.prev();
+    }
+</script></head><body><div class="reveal"><div class="slides"><section class="title"><h1>Apache Isis - Closing the Architecture/Code&nbsp;Gap</h1><div class="paragraph"><p>Dan Haywood &amp; Eoin Woods</p></div>
 <aside class="notes"><div class="paragraph"><p>Original abstract:</p></div>
-<div class="ulist"><ul><li><p>A problem all software projects encounter is making sure that code reflects the desired architectural principles/constraints. Many approaches have been tested, but the practical unification of architecture and code still eludes us.</p></li><li><p>Apache Isis takes a different approach, forcibly separating architectural constructs from domain model, combining the two at runtime. It promises to free the developer from writing “boilerplate” and focus on the domain model instead.</p></li><li><p>In this talk we’re going to explore these architectural issues and demonstrate how the framework addresses these.</p></li></ul></div></aside></section>
-<section id="setting-the-scene"><h2>Setting the scene</h2><div class="ulist"><ul><li><p>&#8230;&#8203;</p></li><li><p>&#8230;&#8203;</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Eoin to set the scene</p></div></aside></section>
-<section id="assumptions-context"><h2>Assumptions/context</h2><div class="ulist"><ul><li><p>we&#8217;re building custom <strong>line-of-business</strong> applications</p></li><li><p>these applications have <strong>relatively complex</strong> domain logic</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Eoin to set the scene</p></div>
-<div class="ulist"><ul><li><p>CRUD applications are just a trivial subset of the above&#8230;&#8203;</p></li></ul></div></aside></section>
-<section><section id="how-to-preserve-the-architectural-integrity-of-the-system" data-transition="slide-in fade-out" data-background="#243"><h2>How to preserve the architectural integrity of the system?</h2><div class="ulist"><ul><li><p>how do you ensure that domain logic does not leach from one layer into an adjacent layer?</p></li><li><p>how do you ensure that its domain logic is easy to find, modify, test?</p></li></ul></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="how-to-preserve-the-architectural-integrity-of-the-system-2" data-transition="fade"><h2>How to preserve the architectural integrity of the system?</h2><div class="ulist"><ul><li><p>we adopt a hexagonal architecture</p><div class="ulist"><ul><li><p>(also known as ports-and-adapters)</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Dan&#8217;s answer</p></div></aside></section><section id="how-to-preserve-the-architectural-integrity-of-the-system-3" data-transition="fade"><h2>How to preserve the architectural integrity of the system?</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/hexagonal-architecture.png" alt="hexagonal architecture" /></div></div></section><section id="how-to-preserve-the-architectural-integrity-of-the-system-4" data-transition="fade"><h2>How to preserve the architectural integrity of the system?</h2><div class="ulist"><ul><li><p>we make the <strong>boundary of the hexagon can&#8217;t be breached</strong></p><div class="ulist"><ul><li><p>beyond the boundary is framework code; you couldn&#8217;t write business logic there even if you wanted to</p></li><li><p>presentation and persistence concerns are orthogonal to the domain</p></li></ul></div></li><li><p>domain logic is easy to trace</p><div class="ulist"><ul><li><p>the <strong>UI is a direct representation</strong> of that domain logic</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>more of Dan&#8217;s answer</p></div>
-<div class="paragraph"><p>long-term, this seems to work&#8230;&#8203;</p></div>
-<div class="ulist"><ul><li><p>12 years on government system</p></li><li><p>over its lifetime, hundreds of developers</p></li><li><p>still releasing monthly</p></li><li><p>no adjacent layers for business logic to leach out into</p></li></ul></div>
-<div class="paragraph"><p>Demo:</p></div>
-<div class="ulist"><ul><li><p>show how a new business action is automatically shown in the UI</p></li></ul></div></aside></section></section>
-<section><section id="how-to-ensure-the-application-plays-well-in-the-larger-enterprise" data-transition="slide-in fade-out" data-background="#243"><h2>How to ensure the application plays well in the larger enterprise?</h2><div class="ulist"><ul><li><p>how do you ensure that the boundaries of the bounded contexts are not eroded over time?</p></li></ul></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="how-to-ensure-the-application-plays-well-in-the-larger-enterprise-2" data-transition="fade"><h2>How to ensure the application plays well in the larger enterprise?</h2><div class="ulist"><ul><li><p>Every action invocation is captured as an <code>Interaction</code></p><div class="ulist"><ul><li><p>target object, the member identifier, the arguments</p></li></ul></div></li><li><p>this <code>Interaction</code> object is a JAXB-annotated DTO, reified into XML</p><div class="ulist"><ul><li><p>can then be published onto an event bus</p></li></ul></div></li><li><p>typically consumers will call back to the REST API</p><div class="ulist"><ul><li><p>REST API with conneg support to access data</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Dan&#8217;s answer</p></div></aside></section><section id="user-invokes-action" data-transition="fade"><h2>User invokes action</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/publisher/slide1.png" alt="slide1" /></div></div></section><section id="action-invocation-published-to-bus" data-transition="fade"><h2>Action invocation published to bus</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/publisher/slide2.png" alt="slide2" /></div></div></section><section id="subscriber-calls-back-via-rest-api" data-transition="fade"><h2>Subscriber calls back via REST API</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/publisher/slide3.png" alt="slide3" /></div></div></section><section id="conneg-used-to-return-stable-dto" data-transition="fade"><h2>Conneg used to return stable DTO</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/publisher/slide4.png" alt="slide4" /></div></div></section><section id="interacts-with-other-system" data-transition="fade"><h2>Interacts with other system</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/publisher/slide5.png" alt="slide5" /></div></div>
-<aside class="notes"><div class="paragraph"><p>Demo:
-* publish action</p></div></aside></section></section>
-<section><section id="how-does-the-framework-support-microservices" data-transition="slide-in fade-out" data-background="#243"><h2>How does the framework support microservices?</h2><div class="ulist"><ul><li><p>the current architectural vogue for building systems is, of course, microservices.</p></li><li><p>can an Apache Isis app be a microservice?</p></li></ul></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="how-does-the-framework-support-microservices-2" data-transition="fade"><h2>How does the framework support microservices?</h2><div class="ulist"><ul><li><p>the framework <strong>automatically provides a REST API</strong>, built out of its metamodel</p></li><li><p>to simplify development we <strong>integrate with Swagger</strong></p><div class="ulist"><ul><li><p>swagger-ui</p></li><li><p>a maven plugin generates the swagger spec for your build&#160;pipeline</p></li></ul></div></li><li><p>the automatic UI also gives your back-end staff the ability to administer the service</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Dan&#8217;s answer</p></div>
-<div class="paragraph"><p>Demo the swagger-ui</p></div></aside></section></section>
-<section><section id="how-does-the-framework-support-monoliths" data-transition="slide-in fade-out" data-background="#243"><h2>How does the framework support monoliths?</h2><div class="ulist"><ul><li><p>even though microservices are where the current hype is, most applications are (and probably should continue to be) monoliths</p></li><li><p>how do you keep your monolith applications modular; how do they not become big balls of mud?</p></li></ul></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="how-does-the-framework-support-monoliths-2" data-transition="fade"><h2>How does the framework support monoliths?</h2><div class="ulist"><ul><li><p>The framework provides two very significant features:</p><div class="ulist"><ul><li><p><strong>mixin</strong>s allow business functionality to be moved out of a domain object</p></li><li><p><strong>domain event</strong>s allow modules to veto or react to changes in other modules</p></li></ul></div></li><li><p>the framework recombines the logic/validation within its metamodel, creating a coherent UI for the end-user</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div></aside></section><section id="mixins" data-transition="slide-in fade-out"><h2>Mixins</h2><div class="ulist"><ul><li><p>Domain objects consist of actions, properties and collections</p></li><li><p>A <strong>mixin</strong> action removes this logic from the domain object and places it into a separate mixin object</p><div class="ulist"><ul><li><p>An object&#8217;s properties and collections can similarly be factored out</p></li></ul></div></li><li><p>The mixin is bound to the domain object by the (interface) types that the domain object implements</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Demo</p></div></aside></section><section id="domain-events" data-transition="fade"><h2>Domain events</h2><div class="ulist"><ul><li><p>A <strong>domain event</strong> is fired whenever the end-user interacts with a member of the domain object</p><div class="ulist"><ul><li><p>hide, disable, validate, executing, executed</p></li></ul></div></li><li><p>The subscriber can either veto the change, or react to it</p><div class="ulist"><ul><li><p>somewhat akin to RDBMS referential integrity, but at the domain layer</p></li></ul></div></li><li><p>Either <a href="https://github.com/google/guava">guava</a> or <a href="http://www.axonframework.org/">AxonFramework</a> can be used as the event&#160;bus implementation</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Demo</p></div></aside></section></section>
-<section><section id="why-build-rather-than-buy-anyway" data-transition="slide-in fade-out" data-background="#243"><h2>Why build rather than buy, anyway?</h2><div class="ulist"><ul><li><p>The "sweet spot" for an Apache Isis application is one with a rich domain, such as case&#160;management, or order&#160;fulfillment</p></li><li><p>Stepping back, does it even make sense to build such an app?  Why not just buy some off-the-shelf packaged software?</p></li></ul></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="why-build-rather-than-buy-anyway-2" data-transition="fade"><h2>Why build rather than buy, anyway?</h2><div class="ulist"><ul><li><p>We should distinguish between the business' core domain and any supporting sub-domains</p></li><li><p>You should <strong>build for your business' core domain</strong></p><div class="ulist"><ul><li><p>otherwise you&#8217;ll be held hostage to your software vendor&#8217;s view of how your company should operate</p></li><li><p>and, you won&#8217;t be able to evolve your business</p></li></ul></div></li><li><p>But, you should <strong>buy for any supporting sub-domains</strong></p><div class="ulist"><ul><li><p>accounting, HR, document management</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div>
-<div class="paragraph"><p>no business benefit in being able to pay your employees more efficiently than your competitor</p></div></aside></section><section id="transformation-costs" data-transition="fade"><h2>Transformation costs</h2><div class="ulist"><ul><li><p>Using packaged software means your business users will end up <strong>translating their own internalized domain model</strong> to/from that of the app</p></li><li><p><strong>Excel</strong> for the back-office staff to transform inputs into the form expected of the app</p></li><li><p><strong>Data warehouse</strong>s to allow executives to make sense of the state of their business</p></li></ul></div></section><section id="using-packaged-software" data-transition="fade"><h2>Using packaged software</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/translation/slide1.png" alt="slide1" /></div></div></section><section id="using-custom-software" data-transition="fade"><h2>Using custom software</h2><div class="imageblock thumb" style=""><div class="content"><img src="./images/translation/slide2.png" alt="slide2" /></div></div></section></section>
-<section><section id="what-sort-of-users-can-use-an-apache-isis-application" data-transition="slide-in fade-out" data-background="#243"><h2>What sort of users can use an Apache&#160;Isis application?</h2><div class="ulist"><ul><li><p>&#8230;&#8203;</p></li><li><p>&#8230;&#8203;</p></li></ul></div></section><section id="what-sort-of-users-can-use-an-apache-isis-application-2" data-transition="fade"><h2>What sort of users can use an Apache&#160;Isis application?</h2><div class="ulist"><ul><li><p>We think of the end-users of our apps along a scale:</p></li></ul></div>
-<div class="imageblock thumb" style=""><div class="content"><img src="./images/user-archetypes.png" alt="user archetypes" /></div></div></section><section id="problem-solvers" data-transition="slide-in fade-out"><h2>Problem solvers</h2><div class="ulist"><ul><li><p>Problem solvers are <strong>domain experts</strong>, who use the application every day</p></li><li><p>Generally <strong>interact with entities</strong> directly</p><div class="ulist"><ul><li><p>View models reserved for high-volume use cases</p></li></ul></div></li><li><p>The app provides a <strong>toolbox</strong> for problem solvers, but doesn&#8217;t mandate a process</p><div class="ulist"><ul><li><p>the process is maleable and in the user&#8217;s own head</p></li></ul></div></li><li><p>Just use Apache&#160;Isis' default "Wicket" viewer</p></li></ul></div></section><section id="process-followers" data-transition="fade"><h2>Process followers</h2><div class="ulist"><ul><li><p>Process followers are <strong>non-expert</strong>, just want to accomplish simple goal</p></li><li><p>Typically <strong>interact with view models</strong></p><div class="ulist"><ul><li><p>simplifications of the domain that encode a process</p></li></ul></div></li><li><p>Typically use a <strong>custom app</strong> that hits the REST API</p><div class="ulist"><ul><li><p>or, can customize the Wicket viewer to their use cases</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Demo <a href="http://github.com/incodehq/contactapp">github.com/incodehq/contactapp</a></p></div></aside></section></section>
-<section><section id="how-does-the-framework-help-build-the-right-system" data-transition="slide-in fade-out" data-background="#243"><h2>How does the framework help build the right system?</h2><div class="ulist"><ul><li><p>&#8230;&#8203;</p></li><li><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="how-does-the-framework-help-build-the-right-system-2" data-transition="fade"><h2>How does the framework help build the right system?</h2><div class="ulist"><ul><li><p>By providing a <strong>tight feedback loop</strong></p><div class="ulist"><ul><li><p>no UI to develop</p></li></ul></div></li><li><p>By demonstrating an <strong>actual running system</strong></p><div class="ulist"><ul><li><p>Creates empathy/association</p></li></ul></div></li><li><p>Also, it builds the <strong>ubiquitous language</strong></p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div>
-<div class="paragraph"><p>anecdote about our users, for whom we had to demonstrate the app with their actual (migrated) production data</p></div></aside></section><section id="contentious-or-sensible" data-transition="convex-in fade-out"><h2>Contentious? or sensible?</h2><div class="ulist"><ul><li><p>Agile methods prefer developing from the outside-in</p><div class="ulist"><ul><li><p>user journeys, captured via BDD etc.</p></li></ul></div></li><li><p>We tend to develop from the <strong>inside-out</strong></p><div class="ulist"><ul><li><p>domain entities first with their domain invariants</p></li><li><p>then add view models to support specific use cases</p></li><li><p>then add layouts for user experience</p></li></ul></div></li><li><p>We don&#8217;t try to infer the domain from a bunch of screens</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div></aside></section><section id="testability" data-transition="fade"><h2>Testability</h2><div class="ulist"><ul><li><p>Unit testing is trivial; Apache Isis apps are glued together using <strong>dependency injection</strong></p></li><li><p>Integration testing is also done within JUnit</p></li><li><p>We use <strong>fixture&#160;scripts</strong> (our own mini-framework) to initialize the (in-memory) database</p><div class="ulist"><ul><li><p>can also be used when prototyping</p></li></ul></div></li><li><p>For the tests themselves, the <code>WrapperFactory</code> service simulates the UI</p><div class="ulist"><ul><li><p>No selenium here, thank you very much!</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>"As well as building the right system, must also build the system right"</p></div>
-<div class="paragraph"><p>Demo</p></div></aside></section><section id="patterns-and-idioms" data-transition="convex-in fade-out"><h2>Patterns and Idioms</h2><div class="ulist"><ul><li><p>The framework is also somewhat opinionated</p></li><li><p>Easy enough to learn</p></li><li><p>Accommodates different skill levels of (developers)</p></li></ul></div>
-<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">TODO - not sure this point is strong enough to keep; lots of frameworks can say this, and there&#8217;s not much to demonstrate</td></tr></table></div></section></section>
-<section><section id="what-about-other-ilities" data-transition="slide-in fade-out" data-background="#243"><h2>What about other "ilities" ?</h2><div class="ulist"><ul><li><p>security ?</p></li><li><p>auditability ?</p></li><li><p>i18n ?</p></li></ul></div><div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa fa-lightbulb-o" title="Tip"></i></td><td class="content"><div class="paragraph"><p>note to Eoin:</p></div>
-<div class="ulist"><ul><li><p>there&#8217;s plenty that could be said here, and it is "architectural", but I think this is too much material, and not necessarily that related to the talk&#8217;s abstract.</p></li></ul></div></td></tr></table></div></section><section id="security" data-transition="fade"><h2>Security</h2><div class="ulist"><ul><li><p>Pluggable</p></li><li><p>out-of-the-box Shiro integration</p><div class="ulist"><ul><li><p>integrate with LDAP, oAuth similarly</p></li></ul></div></li><li><p><a href="http://github.com/isisaddons/isis-module-security">security</a> add-on</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Demo</p></div></aside></section><section id="auditability"><h2>Auditability</h2><div class="ulist"><ul><li><p>Auditer SPI and <a href="http://github.com/isisaddons/isis-module-auditing">add-on</a></p></li><li><p>Publisher SPI and <a href="http://github.com/isisaddons/isis-module-publishmq">add-on</a></p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Demo</p></div></aside></section><section id="i18n" data-transition="fade"><h2>i18n</h2><div class="ulist"><ul><li><p><code>.po</code> files rather than <code>ResourceBundle</code>s</p></li></ul></div></section></section>
-<section><section id="what-about-lock-in" data-transition="slide-in fade-out" data-background="#243"><h2>What about lock-in ?</h2><div class="ulist"><ul><li><p>&#8230;&#8203;</p></li><li><p>&#8230;&#8203;</p></li></ul></div><div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa fa-lightbulb-o" title="Tip"></i></td><td class="content"><div class="paragraph"><p>note to Eoin:</p></div>
-<div class="ulist"><ul><li><p>this section might also be too much material.</p></li><li><p>of all the stuff here, might be worth keeping subsection on different deployment options</p></li></ul></div></td></tr></table></div><aside class="notes"><div class="paragraph"><p>for Eoin to ask</p></div></aside></section><section id="view-layer" data-transition="fade"><h2>View Layer</h2><div class="ulist"><ul><li><p>Use the REST API</p><div class="ulist"><ul><li><p>Naked Objects.NET have a new REST only API</p></li><li><p>for their BSc project, an intern developed a command line/speech API for blind users</p></li></ul></div></li><li><p>Wavemaker</p></li><li><p>NoWicket</p></li><li><p>write a new one, eg Vaadin</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div></aside></section><section id="persistence-layer" data-transition="fade"><h2>Persistence Layer</h2><div class="ulist"><ul><li><p>The framework uses DataNucleus, which implements JDO and JPA</p></li><li><p>Most in the community persist to a relational database</p></li><li><p>DataNucleus provides an SPI for multiple stores, including NoSQL</p><div class="ulist"><ul><li><p>Neo4J, Mongo, Cassandra</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div></aside></section><section id="coding-style" data-transition="fade"><h2>Coding style</h2><div class="ulist"><ul><li><p>there&#8217;s an ORM rehydrating the objects, so that constrains what is valid to some extent</p></li><li><p>the Isis metamodel is quite extensible; can add support for own annotations etc</p></li><li><p>a blend of orientations</p><div class="ulist"><ul><li><p>OO for the mutable entities</p></li><li><p>Functional for value types (can plug in your own)</p></li><li><p>Aspect oriented for the cross-cutting concerns</p></li></ul></div></li></ul></div></section><section id="deployment-options" data-transition="fade"><h2>Deployment Options</h2><div class="ulist"><ul><li><p>prototyping</p></li><li><p>production</p><div class="ulist"><ul><li><p>on the Apache Isis platform</p></li><li><p>host within Spring/CDI say</p></li></ul></div></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>for Dan to answer</p></div></aside></section></section>
-<section id="in-conclusion" data-transition="slide-in fade-out" data-background="#243"><h2>In conclusion</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div></section>
-<section id="learning-more" data-transition="slide-in"><h2>Learning More</h2><div class="ulist"><ul><li><p><a href="http://isis.apache.org">http://isis.apache.org</a></p></li><li><p><a href="http://www.isisaddons.org/">http://www.isisaddons.org/</a></p></li><li><p><a href="http://catalog.incode.org/">http://catalog.incode.org/</a></p></li><li><p><a href="mailto:Eoin.Woods@endava.com">eoin.woods@endava.com</a> and <strong>@eoinwoodz</strong></p></li><li><p><a href="mailto:dan@haywood-associates.co.uk">dan@haywood-associates.co.uk</a> and <strong>@dkhaywood</strong></p></li><li><p>this slide deck at <a href="http://github.com/danhaywood/jaxlondon2016">http://github.com/danhaywood/jaxlondon2016</a></p></li></ul></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+<div class="ulist"><ul><li><p>A problem all software projects encounter is making sure that code reflects the desired architectural principles/constraints. Many approaches have been tested, but the practical unification of architecture and code still eludes us.</p></li><li><p>Apache Isis takes a different approach, forcibly separating architectural constructs from domain model, combining the two at runtime. It promises to free the developer from writing “boilerplate” and focus on the domain model instead.</p></li><li><p>In this talk we’re going to explore these architectural issues and demonstrate how the framework addresses these.</p></li></ul></div></aside><p><small></small></p></section>
+<section id="slide-about-us"><h2>About Us</h2><div class="ulist"><ul><li><p><strong>Eoin Woods</strong> is CTO at Endava, a European IT services company.  He is also the author of “Software Systems Architecture”</p></li><li><p><strong>Dan Haywood</strong> is an independent consultant &amp; developer specializing in domain driven design.  He is an Apache member and PMC chair for apache.isis</p></li><li><p>We met and worked together in the 90s at Sybase, and have (as friends) tracked each other&#8217;s respective careers ever since.</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>TODO: let&#8217;s sprinkle some of the trade-offs throughout, which allows Eoin to put the thing into a larger context</p></div></aside></section>
+<section id="slide-setting-the-scene" class="eoin"><h2>Setting the scene</h2><div class="paragraph"><p>The difficulty of applications over the long-term is:</p></div>
+<div class="ulist"><ul><li class="fragment"><p>defining and enforcing an architectural style</p></li><li class="fragment"><p>ensuring a long-term coherency</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div></section>
+<section id="slide-specific-challenges" class="eoin"><h2>Specific challenges</h2><div class="ulist"><ul><li class="fragment"><p>Business logic leaching into adjacent layers</p></li><li class="fragment"><p>New developers, not knowing the idioms</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div></section>
+<section><section id="slide-apache-isis-and-naked-objects" class="dan"><h2>Apache Isis (and naked objects)</h2><div class="ulist"><ul><li><p>The Apache Isis framework is an implementation of the naked objects pattern</p></li><li><p>Named &amp; developed by Richard&nbsp;Pawson and Rob&nbsp;Matthews</p><div class="ulist"><ul><li><p>further details in Richard&#8217;s "Naked&nbsp;Objects" PhD thesis</p></li><li><p>external examiner was Trygve Reenskaug</p></li></ul></div></li></ul></div><aside class="notes"><div class="paragraph"><p>TODO: quote Trvyge: what MVC was meant to be, "we never got around to it"</p></div></aside></section><section id="slide-a-system"><div class="imageblock thumb" style=""><img src="./images/what-is-nakedobjects/110.PNG" alt="110" width="960px" /></div></section><section id="slide-with-layers"><div class="imageblock thumb" style=""><img src="./images/what-is-nakedobjects/120.PNG" alt="120" width="960px" /></div></section><section id="slide-generic-presentation-persistence"><div class="imageblock" style=""><img src="./images/what-is-nakedobjects/130.PNG" alt="130" width="960px" /></div></section><section id="slide-so-we-can-ignore"><div class="imageblock" style=""><img src="./images/what-is-nakedobjects/140.PNG" alt="140" width="960px" /></div></section><section id="slide-hexagonal-architecture"><div class="imageblock" style=""><img src="./images/what-is-nakedobjects/150.PNG" alt="150" width="960px" /></div></section><section id="slide-with-viewers-and-object-stores"><div class="imageblock" style=""><img src="./images/what-is-nakedobjects/160.PNG" alt="160" width="960px" /></div></section><section id="slide-a-metaphor-the-incredible-machine" class="dan"><h2>A metaphor: the incredible machine</h2><div class="imageblock thumb" style=""><img src="./images/what-is-nakedobjects/incredible-machine.png" alt="incredible machine" width="650px" /></div></section></section>
+<section><section id="slide-generic-ui-ux" class="eoin"><h2>Generic UI/UX</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="paragraph"><p>some discussion on why a generic UI might be useful/beneficial.</p></div>
+<div class="paragraph"><p>Things eoin mentioned last Friday included: "Why&#8217;s this useful?  Because we can get a meaningful user-interface "for free".  Valuable because UX/UI is expensive to develop, is difficult to get right, difficult to keep consistent, is a fashion item so the most important bit to ensure that there are no dependencies upon&#8230;&#8203;</p></div>
+<div class="paragraph"><p>also worth mentioning: provides is consistency throughout, with new features automatically available everywhere (eg hint support, icons via regex, calendars/maps)</p></div>
+<div class="paragraph"><p>eoin: can we see an example of such a generic UI?</p></div></aside></section><section id="slide-generic-uis-are-good-enough-for-many-applications" class="dan"><h2>Generic UIs are "good enough" for many applications</h2><div class="ulist"><ul><li><p>&#8230;&#8203; though it has, admittedly, been a journey to get them to that level!</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>dan: the irony of writing a naked objects framework if one is more interested in the domain than in the UI&#8230;&#8203;</p></div></aside></section><section id="slide-2005"><div class="imageblock" style=""><img src="./images/history/2005-dnd.png" alt="2005 dnd" width="960px" /></div></section><section id="slide-2006"><div class="imageblock" style=""><img src="./images/history/2006-dsfa.png" alt="2006 dsfa" width="960px" /></div></section><section id="slide-2007"><div class="imageblock" style=""><img src="./images/history/2007-rcp.png" alt="2007 rcp" width="960px" /></div></section><section id="slide-2009"><div class="imageblock" style=""><img src="./images/history/2009-scimpi.png" alt="2009 scimpi" width="960px" /></div></section><section id="slide-2012-wicket"><div class="imageblock" style=""><img src="./images/history/2012-wicket.png" alt="2012 wicket" width="960px" /></div></section><section id="slide-2013"><div class="imageblock" style=""><img src="./images/history/2013-TransportDemand.png" alt="2013 TransportDemand" width="960px" /></div></section><section id="slide-2014"><div class="imageblock" style=""><img src="./images/history/2014-estatio.png" alt="2014 estatio" width="960px" /></div></section><section id="slide-2015"><div class="imageblock" style=""><img src="./images/history/2015-estatio.png" alt="2015 estatio" width="960px" /></div></section><section id="slide-2016"><div class="imageblock" style=""><img src="./images/history/2016-todoapp.png" alt="2016 todoapp" width="960px" /></div></section></section>
+<section><section id="slide-an-example-estatio" class="dan"><h2>An example: Estatio</h2><div class="ulist"><ul><li><p><strong><em>Estatio</em></strong> is an invoicing application for tenants within a shopping centre</p></li><li><p>Developed for Eurocommercial Properties, currently deployed to Italy and France</p></li><li><p>The code also happens to be open source (on github)</p></li></ul></div></section><section id="slide--demo"><div class="paragraph"><p><a href="images/rad/estatio-resetDates.mp4">demo: UI derived from domain model</a></p></div></section></section>
+<section><section id="slide-customizing-the-ui" class="eoin"><h2>Customizing the UI</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="paragraph"><p>eoin: trade-offs, to what extent can this UI be customized?</p></div>
+<div class="paragraph"><p>Suggest hold back the question on alternative UIs to next section</p></div></aside></section><section id="slide-customizing-the-ui-2" class="dan"><h2>Customizing the UI</h2><div class="ulist"><ul><li><p>Use annotations, provide UI hints</p><div class="ulist"><ul><li><p>eg <code>@Action</code> vs <code>@ActionLayout</code></p></li></ul></div></li><li><p>Optional <code>.layout.xml</code></p><div class="ulist"><ul><li><p>basically a DSL, modelled on Bootstrap</p></li></ul></div></li><li><p>CSS</p><div class="ulist"><ul><li><p>classes and Ids generated from the metamodel</p></li></ul></div></li><li><p>Plugins to render maps, calendars etc.</p></li></ul></div></section><section id="slide--demo-2"><div class="paragraph"><p><a href="images/rad/estatio-layout.mp4">demo: customizing the UI using <code>.layout.xml</code></a></p></div></section></section>
+<section><section id="slide-alternative-uis" class="eoin"><h2>Alternative UIs</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="paragraph"><p>eoin: and what about completely different UIs?</p></div></aside></section><section id="slide-ges-consultor" class="dan"><h2>GES Consultor</h2><div class="imageblock" style=""><img src="./images/alternatives/gesconsultor.png" alt="gesconsultor" width="960px" /></div>
+<aside class="notes"><div class="paragraph"><p>dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer</p></div></aside></section><section id="slide-user-archetypes" class="dan"><h2>User Archetypes</h2><div class="imageblock" style=""><img src="./images/alternatives/210.png" alt="210" width="960px" /></div></section><section id="slide-rest-swagger"><div class="imageblock" style=""><img src="./images/alternatives/swagger.png" alt="swagger" width="960px" /></div></section><section id="slide-example-of-a-custom-ui-contactapp"><div class="paragraph"><p><a href="images/alternatives/contactapp-1.mp4">example of a custom UI: contactapp</a></p></div></section><section id="slide-testing-ui" class="dan"><h2>Testing "UI"</h2><div class="ulist"><ul><li><p>the framework provides a small testing framework that emulates the UI</p></li><li><p><a href="images/alternatives/contactapp-2.mp4">example functionality within contactapp</a></p></li></ul></div></section><section id="slide-testing-ui-2"><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="java language-java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> name_already_in_use_by_contact() <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="comment">// given</span>
+  <span class="directive">final</span> <span class="predefined-type">String</span> existingName =
+                        fs.getContacts().get(<span class="integer">1</span>).getName();
+  <span class="comment">// expect</span>
+  thrown.expect(InvalidException.class);
+  thrown.expectMessage(<span class="string"><span class="delimiter">&quot;</span><span class="content">Reason: </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">This name is already in use by another contact</span><span class="delimiter">&quot;</span></span>);
+  <span class="comment">// when</span>
+  wrap(<span class="local-variable">this</span>.contact).edit(existingName, <span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>);
+}</code></pre></div></div></section></section>
+<section><section id="slide-architectural-constraints" class="eoin"><h2>Architectural Constraints</h2><div class="ulist"><ul><li class="fragment"><p>on the one hand constraints, well, constrain you</p></li><li class="fragment"><p>on the other hand, they are key to preserving the architectural integrity</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div></section><section id="slide-hexagonal-architecture-2"><div class="imageblock" style=""><img src="./images/what-is-nakedobjects/150.png" alt="150" width="960px" /></div></section><section id="slide-firewalls"><div class="imageblock" style=""><img src="./images/architecture-constraints/180.png" alt="180" width="960px" /></div></section><section id="slide-metamodel-validators" class="dan"><h2>Metamodel validators</h2><div class="ulist"><ul><li><p>Used by framework itself</p><div class="ulist"><ul><li><p>eg to enforce naming conventions</p></li></ul></div></li><li><p>Extensible for other application-specific use cases</p></li><li><p>Metamodel itself is extensible</p><div class="ulist"><ul><li><p>Extension object pattern</p></li></ul></div></li></ul></div></section></section>
+<section><section id="slide-coupling-to-the-framework" class="eoin"><h2>Coupling to the framework?</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="olist upperalpha"><ol class="upperalpha" type="A"><li><p>the idea of this section (if there&#8217;s time) is to address the point that when you use a framework there&#8217;s always some sort of "coupling"; either technical, or (more interestingly) in terms of having the same set of values/beliefs as the framework&#8217;s authors</p><div class="olist lowerroman"><ol class="lowerroman" type="i"><li><p>latter provides an opportunity to do a demo on feedback loops/explorations</p></li></ol></div></li></ol></div></aside></section><section id="slide-decoupling-from-the-framework" class="dan"><h2>Decoupling from the framework</h2><div class="ulist"><ul><li class="fragment"><p>Apache Isis is a framework, not a library</p><div class="ulist"><ul><li><p>Domain objects have a compiled-time coupling to the "applib" (annotations), but that&#8217;s about all</p></li></ul></div></li><li class="fragment"><p>Could deploy an Apache Isis app on Spring, for example</p><div class="ulist"><ul><li><p>&#8230;&#8203; or any other framework providing runtime support for dependency injection and an ORM</p></li></ul></div></li></ul></div></section><section id="slide-beliefs-prejudices" class="dan"><h2>Beliefs/prejudices</h2><div class="ulist"><ul><li><p>Too much emphasis on technical concerns</p><div class="ulist"><ul><li><p>exhibit A: microservices</p></li></ul></div></li><li><p>Conversely, not enough on the domain</p></li><li><p>Feedback loop is the most important thing</p><div class="ulist"><ul><li><p>a generic UI keeps the discussion centred on the domain, not the UI</p></li></ul></div></li></ul></div></section><section id="slide-an-example-exploration"><div class="paragraph"><p><a href="images/feedback-loop/colab2.mp4">example of feedback loops: colab2-exploration</a></p></div>
+<aside class="notes"><div class="paragraph"><p>dan: fixture scripts; choosing titles and icons &#8230;&#8203;</p></div></aside></section></section>
+<section><section id="slide-maintainable-monoliths" class="eoin"><h2>Maintainable Monoliths</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="paragraph"><p>eoin: considering larger architectural concerns&#8230;&#8203; modularity</p></div></aside></section><section id="slide-monoliths-are-maintainable-if"><div class="imageblock" style=""><img src="./images/modules/310.PNG" alt="310" width="960px" /></div></section><section id="slide--decomposed-into-modules"><div class="imageblock" style=""><img src="./images/modules/320.PNG" alt="320" width="960px" /></div></section><section id="slide-modularity-support-in-apache-isis" class="dan"><h2>Modularity support in Apache Isis</h2><div class="ulist"><ul><li><p><strong><em>Mixin</em></strong>s move functionality out of domain objects</p><div class="ulist"><ul><li><p>composite UI creates a coherent whole for the end-user</p></li></ul></div></li><li><p><strong><em>Domain event</em></strong>s coordinate/veto interactions between different modules within the system</p></li><li><p><strong><em>URN</em></strong>s, enabling polymorphic associations</p><div class="ulist"><ul><li><p>"table of two halves" pattern</p></li></ul></div></li></ul></div></section><section id="slide-mixins" class="dan"><h2>Mixins</h2><div class="imageblock" style=""><img src="./images/modules/2016-todoapp-with-mixins.png" alt="2016 todoapp with mixins" width="960px" /></div></section><section id="slide-mixins-2" class="dan"><h2>Mixins</h2><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="java language-java"><span class="annotation">@Mixin</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ToDoItem_next</span> {
+    <span class="directive">private</span> <span class="directive">final</span> ToDoItem toDoItem;
+    <span class="directive">public</span> ToDoItem_next(<span class="directive">final</span> ToDoItem toDoItem) { ... }
+
+    <span class="directive">public</span> ToDoItem <span class="error">$</span><span class="error">$</span>() { ... }
+}</code></pre></div></div></section><section id="slide-domain-events" class="dan"><h2>Domain events</h2><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="java language-java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">CompletedDomainEvent</span>
+                    <span class="directive">extends</span> ToDoItem.ActionDomainEvent {}
+<span class="annotation">@Action</span>(
+    domainEvent = CompletedDomainEvent.class
+)
+<span class="directive">public</span> ToDoItem completed() {
+    setComplete(<span class="predefined-constant">true</span>);
+}</code></pre></div></div></section><section id="slide-domain-events-2"><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="java language-java"><span class="annotation">@DomainService</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ItemCompletedSubscriber</span> {
+    <span class="annotation">@Subscribe</span>
+    <span class="directive">public</span> <span class="type">void</span> on(ToDoItem.CompletedDomainEvent ev) {
+        ToDoItem item = ev.getSource();
+        <span class="keyword">switch</span>(ev.getEventPhase()) {
+            <span class="keyword">case</span> HIDE:      <span class="comment">// ev.hide();</span>
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> DISABLE:   <span class="comment">// ev.disable(...);</span>
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> VALIDATE:  <span class="comment">// ev.invalidate(...);</span>
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> EXECUTING: <span class="comment">// ...</span>
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> EXECUTED:  <span class="comment">// ...</span>
+                <span class="keyword">break</span>;
+        }
+    }
+}</code></pre></div></div></section><section id="slide-pre-built-modules" class="dan"><h2>Pre-built modules</h2><div class="ulist"><ul><li><p>Technical modules</p><div class="ulist"><ul><li><p><a href="http://www.isisaddons.org">www.isisaddons.org</a></p></li></ul></div></li><li><p>Generic (business) sub-domains</p><div class="ulist"><ul><li><p><a href="http://catalog.incode.org">catalog.incode.org</a></p></li></ul></div></li></ul></div></section></section>
+<section><section id="slide-enterprise-architecture" class="eoin"><h2>Enterprise Architecture</h2><div class="ulist"><ul><li class="fragment"><p>assuming you have an EA function&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203; and the EA has agreed what the responsibilities of each bounded context</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div><aside class="notes"><div class="paragraph"><p>eoin: let&#8217;s step further out to the enterprise architecture</p></div></aside></section><section id="slide-inferred-commands" class="dan"><h2>Inferred commands</h2><div class="ulist"><ul><li><p>Each interaction (action invocation or property edit) can be reified into XML</p><div class="ulist"><ul><li><p>published onto an event bus, eg Camel</p></li></ul></div></li><li><p>can be correlated with audit trail</p><div class="ulist"><ul><li><p>ie cause/effect</p></li></ul></div></li></ul></div></section><section id="slide-inferred-commands-2"><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="java language-java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">CompletedDomainEvent</span>
+                    <span class="directive">extends</span> ToDoItem.ActionDomainEvent {}
+<span class="annotation">@Action</span>(
+    domainEvent = CompletedDomainEvent.class,
+    publishing = Publishing.ENABLED
+)
+<span class="directive">public</span> ToDoItem completed() {
+    setComplete(<span class="predefined-constant">true</span>);
+}</code></pre></div></div></section><section id="slide-published-xml"><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="xml language-xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;</span>
+<span class="tag">&lt;ixn:interactionDto</span> <span class="attribute-name">xmlns:com</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://isis.apache.org/schema/common</span><span class="delimiter">&quot;</span></span>
+                    <span class="attribute-name">xmlns:cmd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://isis.apache.org/schema/cmd</span><span class="delimiter">&quot;</span></span>
+                    <span class="attribute-name">xmlns:ixn</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://isis.apache.org/schema/ixn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;ixn:transactionId&gt;</span>8236d616-6fde-45d9-9526-cb7a50b4bd88<span class="tag">&lt;/ixn:transactionId&gt;</span>
+  <span class="tag">&lt;ixn:execution</span> <span class="attribute-name">xsi:type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ixn:actionInvocationDto</span><span class="delimiter">&quot;</span></span>
+       <span class="attribute-name">interactionType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">action_invocation</span><span class="delimiter">&quot;</span></span>
+       <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;ixn:sequence&gt;</span>0<span class="tag">&lt;/ixn:sequence&gt;</span>
+    <span class="tag">&lt;ixn:target</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo.ToDoItem</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;ixn:memberIdentifier&gt;</span>todoapp.dom.todoitem.ToDoItem#completed()<span class="tag">&lt;/ixn:memberIdentifier&gt;</span>
+    <span class="tag">&lt;ixn:parameters</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;ixn:returned</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">reference</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">null</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;com:reference</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo.ToDoItem</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/ixn:returned&gt;</span>
+    <span class="tag">&lt;ixn:user&gt;</span>todoapp-admin<span class="tag">&lt;/ixn:user&gt;</span>
+    <span class="tag">&lt;ixn:title&gt;</span>todo.ToDoItem:0: completed()<span class="tag">&lt;/ixn:title&gt;</span>
+    <span class="tag">&lt;ixn:metrics&gt;</span>
+      <span class="tag">&lt;ixn:timings&gt;</span>
+        <span class="tag">&lt;com:startedAt&gt;</span>2016-09-19T20:36:03.414+01:00<span class="tag">&lt;/com:startedAt&gt;</span>
+        <span class="tag">&lt;com:completedAt&gt;</span>2016-09-19T20:36:03.418+01:00<span class="tag">&lt;/com:completedAt&gt;</span>
+      <span class="tag">&lt;/ixn:timings&gt;</span>
+      <span class="tag">&lt;ixn:objectCounts&gt;</span>
+        <span class="tag">&lt;ixn:loaded</span> <span class="attribute-name">before</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">after</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;ixn:dirtied</span> <span class="attribute-name">before</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">after</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/ixn:objectCounts&gt;</span>
+    <span class="tag">&lt;/ixn:metrics&gt;</span>
+  <span class="tag">&lt;/ixn:execution&gt;</span>
+<span class="tag">&lt;/ixn:interactionDto&gt;</span></code></pre></div></div></section><section id="slide-publishing"><div class="imageblock" style=""><img src="./images/eai/410.PNG" alt="410" width="960px" /></div></section><section id="slide-publishing-2"><div class="imageblock" style=""><img src="./images/eai/420.PNG" alt="420" width="960px" /></div></section><section id="slide-publishing-3"><div class="imageblock" style=""><img src="./images/eai/430.PNG" alt="430" width="960px" /></div></section><section id="slide-publishing-4"><div class="imageblock" style=""><img src="./images/eai/440.PNG" alt="440" width="960px" /></div></section><section id="slide-publishing-5"><div class="imageblock" style=""><img src="./images/eai/450.PNG" alt="450" width="960px" /></div></section><section id="slide-other-examples" class="dan"><h2>Other examples</h2><div class="ulist"><ul><li><p>Security</p></li><li><p>i18n</p></li><li><p>Swagger generation</p></li><li><p>Once you have a metamodel in your hand&#8230;&#8203;</p></li></ul></div></section></section>
+<section id="slide-concluding" class="eoin"><h2>Concluding</h2><div class="ulist"><ul><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>eoin: ie propogating state between systems "for free"</p></div></aside></section>
+<section id="slide-example-apps" class="dan"><h2>Example Apps</h2><div class="ulist"><ul><li><p><a href="http://github.com/estatio/estatio">github.com/estatio/estatio</a></p></li><li><p><a href="http://github.com/incodehq/contactapp">github.com/incodehq/contactapp</a></p></li><li><p><a href="http://github.com/incodehq/contactapp">github.com/incodehq/colab2-exploration</a></p></li><li><p><a href="http://github.com/isisaddons/isis-app-todoapp">github.com/isisaddons/isis-app-todoapp</a></p></li></ul></div></section>
+<section id="slide-learning-more" class="dan"><h2>Learning More</h2><div class="ulist"><ul><li><p><a href="http://isis.apache.org">isis.apache.org</a></p></li><li><p><a href="http://www.isisaddons.org">www.isisaddons.org</a></p></li><li><p><a href="http://catalog.incode.org">catalog.incode.org</a></p></li><li><p><a href="mailto:dan@haywood-associates.co.uk">dan@haywood-associates.co.uk</a> and <strong>@dkhaywood</strong></p></li><li><p><a href="mailto:Eoin.Woods@endava.com">eoin.woods@endava.com</a> and <strong>@eoinwoodz</strong></p></li><li><p><a href="http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf">Richard Pawson&#8217;s Naked Objects PhD thesis</a></p></li><li><p>slide deck at <a href="http://github.com/danhaywood/jaxlondon2016">github.com/danhaywood/jaxlondon2016</a></p></li></ul></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,
@@ -259,9 +416,9 @@ Reveal.initialize({
   previewLinks: false,
   // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
   // NOTE setting the theme in the config no longer works in reveal.js 3.x
-  //theme: Reveal.getQueryHash().theme || 'black',
+  //theme: Reveal.getQueryHash().theme || 'white',
   // Transition style (e.g., none, fade, slide, convex, concave, zoom)
-  transition: Reveal.getQueryHash().transition || 'linear',
+  transition: Reveal.getQueryHash().transition || 'fade',
   // Transition speed (e.g., default, fast, slow)
   transitionSpeed: 'default',
   // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
