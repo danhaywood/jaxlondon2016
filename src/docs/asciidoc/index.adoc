@@ -92,7 +92,7 @@ TODO: quote Trvyge: what MVC was meant to be, "we never got around to it"
 
 
 [.thumb]
-image::what-is-nakedobjects/110.png[width=960px]
+image::what-is-nakedobjects/110.PNG[width=960px]
 
 
 [.dan]
@@ -101,7 +101,7 @@ image::what-is-nakedobjects/110.png[width=960px]
 
 
 [.thumb]
-image::what-is-nakedobjects/120.png[width=960px]
+image::what-is-nakedobjects/120.PNG[width=960px]
 
 
 
@@ -109,14 +109,14 @@ image::what-is-nakedobjects/120.png[width=960px]
 [%notitle]
 === generic presentation & persistence
 
-image::what-is-nakedobjects/130.png[width=960px]
+image::what-is-nakedobjects/130.PNG[width=960px]
 
 
 [.dan]
 [%notitle]
 === so we can ignore
 
-image::what-is-nakedobjects/140.png[width=960px]
+image::what-is-nakedobjects/140.PNG[width=960px]
 
 
 
@@ -124,7 +124,7 @@ image::what-is-nakedobjects/140.png[width=960px]
 [%notitle]
 === hexagonal architecture
 
-image::what-is-nakedobjects/150.png[width=960px]
+image::what-is-nakedobjects/150.PNG[width=960px]
 
 
 
@@ -133,7 +133,7 @@ image::what-is-nakedobjects/150.png[width=960px]
 [%notitle]
 === with viewers and object stores
 
-image::what-is-nakedobjects/160.png[width=960px]
+image::what-is-nakedobjects/160.PNG[width=960px]
 
 
 
@@ -518,14 +518,14 @@ eoin: considering larger architectural concerns... modularity
 === monoliths are maintainable if...
 
 
-image::modules/310.png[width=960px]
+image::modules/310.PNG[width=960px]
 
 
 [.dan]
 [%notitle]
 === ... decomposed into modules
 
-image::modules/320.png[width=960px]
+image::modules/320.PNG[width=960px]
 
 
 
@@ -710,34 +710,34 @@ public ToDoItem completed() {
 [%notitle]
 === Publishing
 
-image::eai/410.png[width=960px]
+image::eai/410.PNG[width=960px]
 
 [.dan]
 [%notitle]
 === Publishing
 
-image::eai/420.png[width=960px]
-
-
-[.dan]
-[%notitle]
-=== Publishing
-
-image::eai/430.png[width=960px]
+image::eai/420.PNG[width=960px]
 
 
 [.dan]
 [%notitle]
 === Publishing
 
-image::eai/440.png[width=960px]
+image::eai/430.PNG[width=960px]
 
 
 [.dan]
 [%notitle]
 === Publishing
 
-image::eai/450.png[width=960px]
+image::eai/440.PNG[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/450.PNG[width=960px]
 
 
 
