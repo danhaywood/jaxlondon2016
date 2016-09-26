@@ -44,18 +44,18 @@ TODO: let's sprinkle some of the trade-offs throughout, which allows Eoin to put
 
 
 [.eoin]
-== The Problem with Successful Systems
+== Problem of Successful Systems
 
-Long lived applications typically suffer from a number of architectural problems.
+Long lived applications suffer from architectural problems.
 [%step]
 
-* the architectural style in use slowly erodes until it is hard to discern
-* new features are needed and it is not clear how they relate to the existing architecture
-* programming patterns, crisply implemented initially, start to soften and become unclear
-* overall coherency starts to weaken because the implemented architecture evolves informally in a piecemeal fashion
+* the architectural style erodes until it is hard to discern
+* not clear how new features fit in the architecture
+* pattern implementations weaken and become unclear
+* coherency weakens due to adhoc architecture evolution
 
 [%step]
-_Change becomes difficult (partly) because implementation and architecture drift apart.  This is inevitable because they are different artefact groups._
+_Change becomes difficult as implementation and architecture drift apart due to them being different artefact groups._
 
 
 [.eoin]
@@ -64,13 +64,12 @@ _Change becomes difficult (partly) because implementation and architecture drift
 [%step]
 
 * Business logic drifts into adjacent layers
-* Domain model becomes unwieldy with duplication and "tactical" changes creeping in
-* Key aspects of the architecture are forgotten or misinterpreted
-* Rushed changes introduce parts of the system that don't fit the architecture at all (the inevitable "special case" modules)
-* New parts of the system are difficult to test, deploy or support
-* Utility modules mysteriously grow in size and scope (can be called from anywhere!)
-* Rationale for key decisions is forgotten leading to poor evolution
-* New developers are unaware of the local development idioms so break them
+* Domain model becomes unwieldy ("tactical" changes)
+* Aspects of the architecture forgotten or misinterpreted
+* Rushed changes create mismatched components
+* New components difficult to test, deploy or support
+* Utility modules grow in size and scope
+* Decision rationale forgotten leading to poor evolution
 
 
 [.dan]
@@ -156,19 +155,16 @@ image::what-is-nakedobjects/incredible-machine.png[width=650px]
 [.eoin]
 == Generic UI/UX
 
+Generic UI allows framework to generate the UI.
 
 [%step]
 
-Genericity in a UI not a goal, but investing in automatic UI generation has a number of advantages.
-
-* A high quality UI is expensive to develop and difficult to get right
-* Skills in UI and UX work are relatively rare in most organisations
-* Difficult to create a UI which is consistent across a large application (let alone across applications)
-* Generated UIs "upgrade" the whole UI at once (e.g. improved date picker)
-* UI fashions change so avoiding lots of custom development in the UI allows easier replacement
-* Having the framework generate the UI prevents accidental domain model / logic / UI coupling.
-
-Using a generic UI allows reuse of skills, guarantees base standard of UI and provides easier evolution - *provided* that the investment in the generic UI framework is made!
+* Good UI is expensive and difficult to get right
+* UI and UX skills relatively rare in most organisations
+* Difficult to create consistent UI at scale
+* Generated UIs "upgrade" whole UI at once
+* Avoiding custom development allows easier replacement
+* Generated UI prevents accidental coupling.
 
 Tradeoff is innability to (easily) support special cases or experimentation.
 
@@ -267,13 +263,11 @@ link:images/rad/estatio-resetDates.mp4[demo: UI derived from domain model]
 [.eoin]
 == Customizing the UI
 
-As we already discussed, a generic UI can have a lot of advantages when it comes to development efficiency, UX consistency and future proofing.
-
-What are the trade offs?
+Generic UI can have advantages in development efficiency, UX consistency and future proofing. What are the trade offs?
 
 [%step]
 
-* How much control can an individual application have on its UI?
+* How much control can an application have on its UI?
 * Can layout, look-and-feel, flow, colour be changed easily?
 * What if an application needs a new widget type entirely?
 
@@ -315,12 +309,12 @@ link:images/rad/estatio-layout.mp4[demo: customizing the UI using `.layout.xml`]
 [.eoin]
 == Alternative UIs
 
-One of the advantages of a framework provided UI is its support for evolution, but how does this work?
+A framework generated UI allows for change.  How does this work?
 
 [%step]
 
-* Can you replace the UI technology in use without affecting core code?
-* Can you provide more than one UI simultaneously?
+* Replace the UI technology in use without affecting core code?
+* Provide more than one UI simultaneously?
 * What does Isis assume about the UI technology it uses?
 
 
@@ -408,14 +402,14 @@ public void name_already_in_use_by_contact() throws Exception {
 [.eoin]
 == Architectural Constraints
 
-One of the reasons that implementation and architecture drift is that its hard to remember the architectural constraints ("guide rails") when you're in the code.
+Implementation and architecture part company when it is hard to remember the architectural constraints
 
 [%step]
 
-* Constraints are there to limit some amount of implementation freedom
-* This allows focus on what is really important and prevents "drift"
-* In most systems it's hard to know how the architectural constraint is realised
-* Frameworks like Isis try to embody the architecture (and its constraints) in the framework
+* Constraints are there to reduce implementation freedom
+* Allow focus on what is important
+* Hard to know how architectural constraints are realised
+* Frameworks like Isis try to embody the constraints in the framework
 
 Try to make the "right" thing the "easy" thing
 
@@ -456,16 +450,15 @@ image::architecture-constraints/180.png[width=960px]
 [.eoin]
 == Coupling to the Framework?
 
-Most frameworks are a "lifestyle choice" needing high commitment to them.  You have to be coupled to something (even if only a language).  What is being coupled to Isis like?
+Most frameworks are a high commitment "lifestyle choice".  What is being coupled to Isis like?
 
 [%step]
 
-* What constraints does Isis place on the *domain model* code?
-* What degree of dependence does domain code *need* to have on Isis?
-* What degree of dependence does domain code *generally have* on Isis?
-* Could Isis domain models realistically be used elsewhere?
-* Can Isis domain models be shared with other uses?
-* How practical is it to replace 3rd party components used by Isis?  (e.g. persistence layer ORM)
+* Constraints on the domain model code?
+* Degree of dependence domain code needs on Isis?
+* Degree of dependence domain code generally has on Isis?
+* Reuse Isis domain models?
+* Replace 3rd party components used by Isis?  (e.g. persistence layer ORM)
 
 
 [NOTE.speaker]
