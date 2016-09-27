@@ -286,12 +286,13 @@ Suggest hold back the question on alternative UIs to next section
 
 
 * Use annotations, provide UI hints
-** eg `@Action` vs `@ActionLayout`
-* Optional `.layout.xml`
+** eg `@ActionLayout` (vs `@Action`), `@MemberOrder`
+* Optional `.layout.xml` for each concrete class
 ** basically a DSL, modelled on Bootstrap
+** reloaded dynamically
 * CSS
 ** classes and Ids generated from the metamodel
-* Plugins to render maps, calendars etc.
+* Plugins to render maps, calendars, export as Excel etc.
 
 
 
@@ -353,35 +354,36 @@ image::cross-cutting/security.png[width=960px]
 [.eoin]
 == Enterprise Architecture
 
-In this context EA is the design of the "system of systems" that forms the technology environment for an organisation
-
-Common concerns for an EA group include:
+The "system of systems" forming the technology environment for an organisation.  Concerns include:
 
 [%step]
 
 * What is the functional scope of each system?
 * How do systems interact to support business processes?
-* Where is data mastered, owned, copied, changed, accessed?
-* How is data stored?
-* What technical standardisation is valuable?  What what will the standards be?
+* Where is data mastered, owned, copied, changed, accessed?  How is it stored?
+* What technical standardisation is available/valuable?
 
-How can Apache Isis help or hinder the evolution of an enterprise's technology architecture?
+Does Apache Isis help or hinder the evolution of an enterprise's technology architecture?
 
-[NOTE.speaker]
-====
-eoin: let's step further out to the enterprise architecture
-====
 
+
+[.dan]
+=== Bounded contexts, standard interactions
+
+* Each system should have clear responsibilities
+** A bespoke app (as opposed to COTS systems) can be tailored precisely for its user base
+* Multiple hooks (SPIs) at the application layer, domain layer, persistence layer
+* In particular, interactions can be automatically published
 
 
 [.dan]
 === Inferred commands
 
 * Each interaction (action invocation or property edit) can be reified into XML
-** published onto an event bus, eg Camel
+** persisted and then published onto an event bus, eg Apache Camel
 ** we recommend "skinny" events, better separation of responsibilities
-* can be correlated with audit trail
-** ie cause/effect
+* Also useful for profiling, auditing, replay/regressions
+** correlated with audit trail (ie cause/effect)
 
 
 [.dan]
@@ -551,9 +553,10 @@ Implementation and architecture part company when it is hard to remember the arc
 * Constraints are there to reduce implementation freedom
 * Allow focus on what is important
 * Hard to know how architectural constraints are realised
-* Frameworks like Apache Isis try to embody the constraints in the framework
+* Frameworks such as Apache Isis aim to embody the constraints _within_ the framework
 
 Try to make the "right" thing the "easy" thing
+
 
 
 [.dan]
@@ -578,13 +581,15 @@ image::architecture-constraints/180.png[width=960px]
 
 
 [.dan]
-=== Metamodel validators
+=== Existence proof
 
-* Used by framework itself
-** eg to enforce naming conventions
-* Extensible for other application-specific use cases
-* Metamodel itself is extensible
-** Extension object pattern
+* Department of Social Protection, Ireland
+** Implemented a Naked Objects system in 2004
+* Originally just for pensions and child benefit
+** Now caters for >75% of the benefits administered by the government
+* First release 2006, still releasing monthly
+* 100s of developers over that time, 3 vendors
+** multiple projects ongoing at any given time
 
 
 
@@ -598,7 +603,7 @@ Current fashion is towards "microservices" (often without much thought as to tra
 
 * Genuine modularity and dependency management is key
 * Understanding many types of coupling (message, data, control, global data, pathological)
-* Ensure high cohesion in modules to avoid "buckets of code"
+* Ensure high cohesion in modules, avoid "buckets of code"
 * Need to achieve measurement and visibility
 
 This is all easier to enforce when code is physically separate (hence microservices) but can be done in a monolith perfectly well.
@@ -609,6 +614,19 @@ How does Apache Isis do it?
 ====
 eoin: considering larger architectural concerns... modularity
 ====
+
+
+
+[.dan]
+=== Modularity approach
+
+* The framework uses Apache Maven modules to manage compile-time dependencies
+** factor out generic technical/business modules
+* Each module with entities maps to its own (DB) schema
+** Foreign keys within schemas
+* Various techniques/features to decouple
+** eg good ole' dependency inversion principle
+** eg "table-of-two halves" pattern for polymorphic associations between entities in different modules
 
 
 
@@ -628,8 +646,21 @@ image::modules/320.png[width=960px]
 
 
 
+
 [.dan]
-=== Modularity support in Apache Isis
+=== Pre-built modules
+
+* Technical modules
+** link:http://www.isisaddons.org[www.isisaddons.org]
+
+* Generic (business) sub-domains
+** link:http://catalog.incode.org[catalog.incode.org]
+
+
+
+
+[.dan]
+=== Modularity features of Apache Isis
 
 * **__Mixin__**s move functionality out of domain objects
 ** composite UI creates a coherent whole for the end-user
@@ -637,7 +668,7 @@ image::modules/320.png[width=960px]
 * **__Domain event__**s coordinate/veto interactions between different modules within the system
 
 * **__URN__**s, enabling polymorphic associations
-** "table of two halves" pattern
+** enabler of the "table of two halves" pattern
 
 
 [.dan]
@@ -774,19 +805,6 @@ public class ItemCompletedSubscriber {
 
 
 
-[.dan]
-=== Pre-built modules
-
-* Technical modules
-** link:http://www.isisaddons.org[www.isisaddons.org]
-
-* Generic (business) sub-domains
-** link:http://catalog.incode.org[catalog.incode.org]
-
-
-
-
-
 [.eoin]
 == Appendix: Alternative UIs
 
@@ -799,12 +817,18 @@ A framework generated UI allows for change.  How does this work?
 * What does Apache Isis assume about the UI technology it uses?
 
 
-[NOTE.speaker]
-====
-eoin: and what about completely different UIs?
-====
 
 
+[.dan]
+=== Alternative Generic UIs
+
+* Generic UIs basically iterate over the metamodel
+** Extensible via "facets" (extension object pattern)
+* Can run multiple UIs in parallel, eg Wicket and REST
+* The programming model aims to generify UI concepts
+** eg `@DomainObject(bounded=true)` => a drop-down
+* We will develop other UIs in the future, eg Vaadin, Polymer
+** It is viable to write your own generic UI
 
 
 [.dan]
@@ -814,17 +838,32 @@ image::alternatives/gesconsultor.png[width=960px]
 
 
 
-[NOTE.speaker]
-====
-dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer
-====
+[.dan]
+=== User Archetypes
+
+Generic UIs aren't appropriate in all cases
+
+image::alternatives/210.png[width=960px]
+
 
 
 
 [.dan]
-=== User Archetypes
+=== Alternative Custom UIs
 
-image::alternatives/210.png[width=960px]
+* The Wicket viewer can be customized heavily
+** chain of responsibliity pattern to identify each widget
+* Intend to integrate with link:http://invesdwin.de/nowicket/introduction[NoWicket] framework
+* More generally, use the REST API to build a custom UI
+
+
+
+
+[.dan]
+[%notitle]
+=== REST API (Swagger)
+
+image::cross-cutting/swagger.png[width=960px]
 
 
 
@@ -835,8 +874,6 @@ image::alternatives/210.png[width=960px]
 === Example of a custom UI: contactapp
 
 link:images/alternatives/contactapp-1.mp4[example of a custom UI: contactapp]
-
-
 
 
 
@@ -856,19 +893,17 @@ Most frameworks are a high commitment "lifestyle choice".  What is being coupled
 
 
 
-
-
 [.dan]
 === Decoupling from the framework
 
 [%step]
 
-* Apache Isis is a framework, not a library
-** Domain objects have a compiled-time coupling to the "applib" (annotations), but that's about all
+* Domain objects have a compile-time coupling to the "applib" (for annotations), that's about all
 * Could deploy an Apache Isis app on Spring, for example
 ** ... or any other framework providing runtime support for dependency injection and an ORM
-
-
+* Is dependent on DataNucleus ORM (JDO and JPA)
+** RDBMS and NoSQL, extensible via its StoreManager SPI
+** Could ignore, just use view models rather than entities
 
 
 [.dan]
@@ -876,8 +911,7 @@ Most frameworks are a high commitment "lifestyle choice".  What is being coupled
 
 * Apache Isis is an opinionated framework
 * One opinion we hold is there is too much emphasis on technical concerns (and not enough on the domain)
-** exhibit A: microservices
-* another: the UI is a fashion item; it doesn't make sense to try to infer the domain from the outside-in
+* Another: the UI is a fashion item; it doesn't make sense to try to infer the domain from the outside-in
 ** start at the domain model, work your way out
 * A *_feedback loop_* is the most important thing
 ** with *_testability_* a close second
@@ -910,17 +944,45 @@ fixture scripts; choosing titles and icons ...
 * we also have another small testing framework that emulates the UI
 ** reuse the same fixtures as used in prototyping
 
-* link:images/alternatives/contactapp-2.mp4[example functionality within contactapp]
 
 
 
 
 [.dan]
 [%notitle]
+=== Example for testing
+
+
+link:images/alternatives/contactapp-2.mp4[example for testing: some functionality within contactapp]
+
+
+
+[.dan]
+[%notitle]
+=== Fixture script
+
+A fixture script create data for the test scenario:
+
+[source,java]
+----
+DemoFixture fs;
+Contact contact;
+
+@Before
+public void setUp() throws Exception {
+    this.fs = new DemoFixture();
+    fixtureScripts.runFixtureScript(fs, null);
+
+    this.contact = fs.getContacts().get(0);
+}
+----
+
+
+[.dan]
+[%notitle]
 === Emulating the UI
 
-* the `WrapperFactory` service creates a proxy around domain objects
-** enforces the rules of the generic UI layer
+The `WrapperFactory` "wraps" each domain object, enforces the rules of the generic UI:
 
 [source,java]
 ----
