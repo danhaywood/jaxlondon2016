@@ -305,46 +305,27 @@ link:images/rad/estatio-layout.mp4[demo: customizing the UI using `.layout.xml`]
 
 
 
-
 [.eoin]
-== Alternative UIs
-
-A framework generated UI allows for change.  How does this work?
+== Other Cross-cutting concerns
 
 [%step]
 
-* Replace the UI technology in use without affecting core code?
-* Provide more than one UI simultaneously?
-* What does Isis assume about the UI technology it uses?
-
-
-[NOTE.speaker]
-====
-eoin: and what about completely different UIs?
-====
-
+* a generic UI really treats presentation as a cross-cutting concern
+* once you have a meta-model in your hands, there are other cross-cutting concerns that can be tackled
+* given that a significant part of architecture is figuring out how to tackle these "-ilities", this is significant
+* ...
 
 
 
 [.dan]
-=== GES Consultor
+=== For example
 
-image::alternatives/gesconsultor.png[width=960px]
-
-
-
-[NOTE.speaker]
-====
-dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer
-====
-
-
-
-[.dan]
-=== User Archetypes
-
-image::alternatives/210.png[width=960px]
-
+* REST (Swagger)
+* Security
+* audit trail
+* i18n
+* Metamodel validation/constraints
+* EAI/background processing
 
 
 
@@ -352,55 +333,216 @@ image::alternatives/210.png[width=960px]
 [%notitle]
 === REST (Swagger)
 
-
-image::alternatives/swagger.png[width=960px]
-
-
-
-[.dan]
-[%notitle]
-=== Example of a custom UI: contactapp
-
-link:images/alternatives/contactapp-1.mp4[example of a custom UI: contactapp]
-
-
-
-
-[.dan]
-=== Testing "UI"
-
-* the framework provides a small testing framework that emulates the UI
-
-* link:images/alternatives/contactapp-2.mp4[example functionality within contactapp]
-
+image::cross-cutting/swagger.png[width=960px]
 
 
 
 [.dan]
 [%notitle]
-=== Testing "UI"
+=== Security
+
+image::cross-cutting/security.png[width=960px]
+
+
+
+
+
+
+
+
+[.eoin]
+== Enterprise Architecture
+
+In this context EA is the design of the "system of systems" that forms the technology environment for an organisation
+
+Common concerns for an EA group include:
+
+[%step]
+
+* What is the functional scope of each system?
+* How do systems interact to support business processes?
+* Where is data mastered, owned, copied, changed, accessed?
+* How is data stored?
+* What technical standardisation is valuable?  What what will the standards be?
+
+How can Apache Isis help or hinder the evolution of an enterprise's technology architecture?
+
+[NOTE.speaker]
+====
+eoin: let's step further out to the enterprise architecture
+====
+
+
+
+[.dan]
+=== Inferred commands
+
+* Each interaction (action invocation or property edit) can be reified into XML
+** published onto an event bus, eg Camel
+** we recommend "skinny" events, better separation of responsibilities
+* can be correlated with audit trail
+** ie cause/effect
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/410.PNG[width=960px]
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/420.PNG[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/430.PNG[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/440.PNG[width=960px]
+
+
+[.dan]
+[%notitle]
+=== Publishing
+
+image::eai/450.PNG[width=960px]
+
+
+
+[.dan]
+=== A published action
 
 [source,java]
 ----
-@Test
-public void name_already_in_use_by_contact() throws Exception {
-  // given
-  final String existingName =
-                        fs.getContacts().get(1).getName();
-  // expect
-  thrown.expect(InvalidException.class);
-  thrown.expectMessage("Reason: " +
-        "This name is already in use by another contact");
-  // when
-  wrap(this.contact).edit(existingName, null, null, null);
+public static class CompletedDomainEvent
+                    extends ToDoItem.ActionDomainEvent {}
+@Action(
+    domainEvent = CompletedDomainEvent.class,
+    publishing = Publishing.ENABLED
+)
+public ToDoItem completed() {
+    setComplete(true);
 }
+----
+
+
+[NOTE.speaker]
+====
+eg publish onto the Apache Camel bus (and persist as entity for retry)
+====
+
+
+[.dan]
+=== PublisherService
+
+[source,java]
+----
+public interface PublisherService {
+    void publish(Interaction.Execution<?, ?> execution);
+}
+----
+
+[NOTE.speaker]
+====
+Implementations can use Interaction.Execution#getDto() to obtain a serializable XML representation of the execution.
+====
+
+
+
+
+
+[.dan .small]
+[%notitle]
+=== published xml
+
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ixn:interactionDto xmlns:com="http://isis.apache.org/schema/common"
+                    xmlns:cmd="http://isis.apache.org/schema/cmd"
+                    xmlns:ixn="http://isis.apache.org/schema/ixn">
+  <ixn:transactionId>8236d616-6fde-45d9-9526-cb7a50b4bd88</ixn:transactionId>
+  <ixn:execution xsi:type="ixn:actionInvocationDto"
+       interactionType="action_invocation"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ixn:sequence>0</ixn:sequence>
+    <ixn:target type="todo.ToDoItem" id="0"/>
+    <ixn:memberIdentifier>todoapp.dom.todoitem.ToDoItem#completed()</ixn:memberIdentifier>
+    <ixn:parameters/>
+    <ixn:returned type="reference" null="false">
+      <com:reference type="todo.ToDoItem" id="0"/>
+    </ixn:returned>
+    <ixn:user>todoapp-admin</ixn:user>
+    <ixn:title>todo.ToDoItem:0: completed()</ixn:title>
+    <ixn:metrics>
+      <ixn:timings>
+        <com:startedAt>2016-09-19T20:36:03.414+01:00</com:startedAt>
+        <com:completedAt>2016-09-19T20:36:03.418+01:00</com:completedAt>
+      </ixn:timings>
+      <ixn:objectCounts>
+        <ixn:loaded before="3" after="3"/>
+        <ixn:dirtied before="0" after="1"/>
+      </ixn:objectCounts>
+    </ixn:metrics>
+  </ixn:execution>
+</ixn:interactionDto>
 ----
 
 
 
 
 [.eoin]
-== Architectural Constraints
+== Concluding
+
+[%step]
+
+* ...
+* ...
+* ...
+
+
+
+
+[.dan]
+== Example Apps
+
+* link:http://github.com/estatio/estatio[github.com/estatio/estatio]
+* link:http://github.com/incodehq/contactapp[github.com/incodehq/contactapp]
+* link:http://github.com/incodehq/contactapp[github.com/incodehq/colab2-exploration]
+* link:http://github.com/isisaddons/isis-app-todoapp[github.com/isisaddons/isis-app-todoapp]
+
+
+
+[.dan]
+== Learning More
+
+* link:http://isis.apache.org[isis.apache.org]
+* link:http://www.isisaddons.org[www.isisaddons.org]
+* link:http://catalog.incode.org[catalog.incode.org]
+
+* link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*
+* link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
+
+* link:http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf[Richard Pawson's Naked Objects PhD thesis]
+* slide deck at link:http://github.com/danhaywood/jaxlondon2016[github.com/danhaywood/jaxlondon2016]
+
+
+
+
+
+[.eoin]
+== Appendix: Architectural Constraints
 
 Implementation and architecture part company when it is hard to remember the architectural constraints
 
@@ -409,7 +551,7 @@ Implementation and architecture part company when it is hard to remember the arc
 * Constraints are there to reduce implementation freedom
 * Allow focus on what is important
 * Hard to know how architectural constraints are realised
-* Frameworks like Isis try to embody the constraints in the framework
+* Frameworks like Apache Isis try to embody the constraints in the framework
 
 Try to make the "right" thing the "easy" thing
 
@@ -448,74 +590,7 @@ image::architecture-constraints/180.png[width=960px]
 
 
 [.eoin]
-== Coupling to the Framework?
-
-Most frameworks are a high commitment "lifestyle choice".  What is being coupled to Isis like?
-
-[%step]
-
-* Constraints on the domain model code?
-* Degree of dependence domain code needs on Isis?
-* Degree of dependence domain code generally has on Isis?
-* Reuse Isis domain models?
-* Replace 3rd party components used by Isis?  (e.g. persistence layer ORM)
-
-
-[NOTE.speaker]
-====
-.... the idea of this section (if there's time) is to address the point that when you use a framework there's always some sort of "coupling"; either technical, or (more interestingly) in terms of having the same set of values/beliefs as the framework's authors
-
-... latter provides an opportunity to do a demo on feedback loops/explorations
-====
-
-
-
-
-[.dan]
-=== Decoupling from the framework
-
-[%step]
-
-* Apache Isis is a framework, not a library
-** Domain objects have a compiled-time coupling to the "applib" (annotations), but that's about all
-* Could deploy an Apache Isis app on Spring, for example
-** ... or any other framework providing runtime support for dependency injection and an ORM
-
-
-
-
-[.dan]
-=== Beliefs/prejudices
-
-* Too much emphasis on technical concerns
-** exhibit A: microservices
-* Conversely, not enough on the domain
-* Feedback loop is the most important thing
-** a generic UI keeps the discussion centred on the domain, not the UI
-
-
-
-
-[.dan]
-[%notitle]
-=== An example exploration
-
-
-link:images/feedback-loop/colab2.mp4[example of feedback loops: colab2-exploration]
-
-
-
-[NOTE.speaker]
-====
-dan: fixture scripts; choosing titles and icons ...
-====
-
-
-
-
-
-[.eoin]
-== Maintainable Monoliths
+== Appendix: Maintainable Monoliths
 
 Current fashion is towards "microservices" (often without much thought as to trade offs).  However monoliths are perfectly maintainable if well built and evolved.
 
@@ -528,7 +603,7 @@ Current fashion is towards "microservices" (often without much thought as to tra
 
 This is all easier to enforce when code is physically separate (hence microservices) but can be done in a monolith perfectly well.
 
-How does Isis do it?
+How does Apache Isis do it?
 
 [NOTE.speaker]
 ====
@@ -615,15 +690,81 @@ public class ItemCompletedSubscriber {
     public void on(ToDoItem.CompletedDomainEvent ev) {
         ToDoItem item = ev.getSource();
         switch(ev.getEventPhase()) {
-            case HIDE:      // ev.hide();
+            case HIDE:
+                ev.hide();
                 break;
-            case DISABLE:   // ev.disable(...);
+        }
+    }
+}
+----
+
+
+[.dan]
+[%notitle]
+=== Domain events
+
+[source,java]
+----
+@DomainService
+public class ItemCompletedSubscriber {
+    @Subscribe
+    public void on(ToDoItem.CompletedDomainEvent ev) {
+        ToDoItem item = ev.getSource();
+        switch(ev.getEventPhase()) {
+            case DISABLE:
+                ev.disable(...);
                 break;
-            case VALIDATE:  // ev.invalidate(...);
+        }
+    }
+}
+----
+
+
+
+[.dan]
+[%notitle]
+=== Domain events
+
+[source,java]
+----
+@DomainService
+public class ItemCompletedSubscriber {
+    @Subscribe
+    public void on(ToDoItem.CompletedDomainEvent ev) {
+        ToDoItem item = ev.getSource();
+        switch(ev.getEventPhase()) {
+            case VALIDATE:
+                ev.invalidate(...);
                 break;
-            case EXECUTING: // ...
+        }
+    }
+}
+----
+
+
+
+
+[.dan]
+[%notitle]
+=== Domain events
+
+[source,java]
+----
+@DomainService
+public class ItemCompletedSubscriber {
+    @Subscribe
+    public void on(ToDoItem.CompletedDomainEvent ev) {
+        ToDoItem item = ev.getSource();
+        switch(ev.getEventPhase()) {
+            case HIDE:
                 break;
-            case EXECUTED:  // ...
+            case DISABLE:
+                break;
+            case VALIDATE:
+                break;
+            case EXECUTING:
+                break;
+            case EXECUTED:
                 break;
         }
     }
@@ -647,180 +788,158 @@ public class ItemCompletedSubscriber {
 
 
 [.eoin]
-== Enterprise Architecture
+== Appendix: Alternative UIs
 
-In this context EA is the design of the "system of systems" that forms the technology environment for an organisation
-
-Common concerns for an EA group include:
+A framework generated UI allows for change.  How does this work?
 
 [%step]
 
-* What is the functional scope of each system?
-* How do systems interact to support business processes?
-* Where is data mastered, owned, copied, changed, accessed?
-* How is data stored?
-* What technical standardisation is valuable?  What what will the standards be?
+* Replace the UI technology in use without affecting core code?
+* Provide more than one UI simultaneously?
+* What does Apache Isis assume about the UI technology it uses?
 
-How can Isis help or hinder the evolution of an enterprise's technology architecture?
 
 [NOTE.speaker]
 ====
-eoin: let's step further out to the enterprise architecture
+eoin: and what about completely different UIs?
+====
+
+
+
+
+[.dan]
+=== GES Consultor
+
+image::alternatives/gesconsultor.png[width=960px]
+
+
+
+[NOTE.speaker]
+====
+dan: take about ~3 months to write a new custom UI, eg Vaadin, Polymer
 ====
 
 
 
 [.dan]
-=== Inferred commands
+=== User Archetypes
 
-* Each interaction (action invocation or property edit) can be reified into XML
-** published onto an event bus, eg Camel
-* can be correlated with audit trail
-** ie cause/effect
+image::alternatives/210.png[width=960px]
 
 
-[.dan]
-[%notitle]
-=== Inferred commands
-
-[source,java]
-----
-public static class CompletedDomainEvent
-                    extends ToDoItem.ActionDomainEvent {}
-@Action(
-    domainEvent = CompletedDomainEvent.class,
-    publishing = Publishing.ENABLED
-)
-public ToDoItem completed() {
-    setComplete(true);
-}
-----
-
-[.dan .small]
-[%notitle]
-=== published xml
-
-
-[source,xml]
-----
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ixn:interactionDto xmlns:com="http://isis.apache.org/schema/common"
-                    xmlns:cmd="http://isis.apache.org/schema/cmd"
-                    xmlns:ixn="http://isis.apache.org/schema/ixn">
-  <ixn:transactionId>8236d616-6fde-45d9-9526-cb7a50b4bd88</ixn:transactionId>
-  <ixn:execution xsi:type="ixn:actionInvocationDto"
-       interactionType="action_invocation"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <ixn:sequence>0</ixn:sequence>
-    <ixn:target type="todo.ToDoItem" id="0"/>
-    <ixn:memberIdentifier>todoapp.dom.todoitem.ToDoItem#completed()</ixn:memberIdentifier>
-    <ixn:parameters/>
-    <ixn:returned type="reference" null="false">
-      <com:reference type="todo.ToDoItem" id="0"/>
-    </ixn:returned>
-    <ixn:user>todoapp-admin</ixn:user>
-    <ixn:title>todo.ToDoItem:0: completed()</ixn:title>
-    <ixn:metrics>
-      <ixn:timings>
-        <com:startedAt>2016-09-19T20:36:03.414+01:00</com:startedAt>
-        <com:completedAt>2016-09-19T20:36:03.418+01:00</com:completedAt>
-      </ixn:timings>
-      <ixn:objectCounts>
-        <ixn:loaded before="3" after="3"/>
-        <ixn:dirtied before="0" after="1"/>
-      </ixn:objectCounts>
-    </ixn:metrics>
-  </ixn:execution>
-</ixn:interactionDto>
-----
 
 
 
 [.dan]
 [%notitle]
-=== Publishing
+=== Example of a custom UI: contactapp
 
-image::eai/410.PNG[width=960px]
+link:images/alternatives/contactapp-1.mp4[example of a custom UI: contactapp]
 
-[.dan]
-[%notitle]
-=== Publishing
-
-image::eai/420.PNG[width=960px]
-
-
-[.dan]
-[%notitle]
-=== Publishing
-
-image::eai/430.PNG[width=960px]
-
-
-[.dan]
-[%notitle]
-=== Publishing
-
-image::eai/440.PNG[width=960px]
-
-
-[.dan]
-[%notitle]
-=== Publishing
-
-image::eai/450.PNG[width=960px]
-
-
-
-
-[.dan]
-=== Other examples
-
-* Security
-* i18n
-* Swagger generation
-* Once you have a metamodel in your hand...
 
 
 
 
 [.eoin]
-== Concluding
+== Appendix: Coupling to the Framework?
+
+Most frameworks are a high commitment "lifestyle choice".  What is being coupled to Apache Isis like?
 
 [%step]
 
-* ...
-* ...
-* ...
+* Constraints on the domain model code?
+* Degree of dependence domain code needs on Apache Isis?
+* Degree of dependence domain code generally has on Apache Isis?
+* Reuse Apache Isis domain models?
+* Replace 3rd party components used by Apache Isis?  (e.g. persistence layer ORM)
+
+
+
+
+
+
+[.dan]
+=== Decoupling from the framework
+
+[%step]
+
+* Apache Isis is a framework, not a library
+** Domain objects have a compiled-time coupling to the "applib" (annotations), but that's about all
+* Could deploy an Apache Isis app on Spring, for example
+** ... or any other framework providing runtime support for dependency injection and an ORM
+
+
+
+
+[.dan]
+=== Beliefs/prejudices
+
+* Apache Isis is an opinionated framework
+* One opinion we hold is there is too much emphasis on technical concerns (and not enough on the domain)
+** exhibit A: microservices
+* another: the UI is a fashion item; it doesn't make sense to try to infer the domain from the outside-in
+** start at the domain model, work your way out
+* A *_feedback loop_* is the most important thing
+** with *_testability_* a close second
+
+
+
+[.dan]
+[%notitle]
+=== An example exploration
+
+
+link:images/feedback-loop/colab2.mp4[example of feedback loops: colab2-exploration]
 
 
 
 [NOTE.speaker]
 ====
-eoin: ie propogating state between systems "for free"
+this took from 10am to 4pm (with an hour for lunch)... 5 hours.
+
+fixture scripts; choosing titles and icons ...
 ====
 
 
 
 
 [.dan]
-== Example Apps
+=== Support for Testing
 
-* link:http://github.com/estatio/estatio[github.com/estatio/estatio]
-* link:http://github.com/incodehq/contactapp[github.com/incodehq/contactapp]
-* link:http://github.com/incodehq/contactapp[github.com/incodehq/colab2-exploration]
-* link:http://github.com/isisaddons/isis-app-todoapp[github.com/isisaddons/isis-app-todoapp]
+* we set up test data for prototyping using a mini-framework called "fixture scripts"
+* we also have another small testing framework that emulates the UI
+** reuse the same fixtures as used in prototyping
+
+* link:images/alternatives/contactapp-2.mp4[example functionality within contactapp]
+
 
 
 
 [.dan]
-== Learning More
+[%notitle]
+=== Emulating the UI
 
-* link:http://isis.apache.org[isis.apache.org]
-* link:http://www.isisaddons.org[www.isisaddons.org]
-* link:http://catalog.incode.org[catalog.incode.org]
+* the `WrapperFactory` service creates a proxy around domain objects
+** enforces the rules of the generic UI layer
 
-* link:mailto:dan@haywood-associates.co.uk[dan@haywood-associates.co.uk] and *@dkhaywood*
-* link:mailto:Eoin.Woods@endava.com[eoin.woods@endava.com] and *@eoinwoodz*
+[source,java]
+----
+@Test
+public void name_already_in_use_by_contact() throws Exception {
+  // given
+  final String existingName =
+                        fs.getContacts().get(1).getName();
+  // expect
+  thrown.expect(InvalidException.class);
+  thrown.expectMessage("Reason: " +
+        "This name is already in use by another contact");
+  // when
+  wrap(this.contact).edit(existingName, null, null, null);
+}
+----
 
-* link:http://isis.apache.org/resources/thesis/Pawson-Naked-Objects-thesis.pdf[Richard Pawson's Naked Objects PhD thesis]
-* slide deck at link:http://github.com/danhaywood/jaxlondon2016[github.com/danhaywood/jaxlondon2016]
+
+
+
+
+
