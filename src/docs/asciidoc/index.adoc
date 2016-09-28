@@ -298,28 +298,17 @@ link:images/rad/estatio-layout.mp4[demo: customizing the UI using `.layout.xml`]
 
 
 [.eoin]
-== Other Cross-cutting concerns
+== Other Cross-cutting Concerns
 
 * a generic UI treats the UI as a cross-cutting concern
-* enabled by the magic of a meta-model and other concerns can be tackled too
+* enabled by the magic of a meta-model, other concerns can be tackled too
 ** check & enforce patterns or constraints
-** add security automatically
-** add an audit trail
-** add generic processing (e.g. export) automatically
+** add security automatically, audit trail
+** interface specifications, eg Swagger
+** i18n
 
 _Like a standardised version of aspects_
 
-
-
-[.dan]
-=== For example
-
-* REST (Swagger)
-* Security
-* audit trail
-* i18n
-* Metamodel validation/constraints
-* EAI/background processing
 
 
 
@@ -364,7 +353,7 @@ _Does Isis help the evolution of an enterprise architecture?_
 * Each system should have clear responsibilities
 ** A bespoke app (as opposed to COTS systems) can be tailored precisely for its user base
 * Multiple hooks (SPIs) at the application layer, domain layer, persistence layer
-* In particular, interactions can be automatically published
+** In particular, interactions can be automatically published to other systems in the enterprise
 
 
 [.dan]
@@ -500,10 +489,10 @@ Implementations can use Interaction.Execution#getDto() to obtain a serializable 
 
 [%step]
 * Most projects build their own architecture framework
-** This provides a lot of flexibility and control
-** ... and a lot of work
-** ... and constant potential for inconsistency
-* By accepting the constraints of Isis, the "architecture" comes for free and enforces true modularity and separation of concerns.
+* This provides a lot of flexibility and control...
+* ... but also a lot of work
+* ... and the constant potential for inconsistency
+* By accepting the constraints of Apache Isis, the "architecture" comes for free and enforces true modularity and separation of concerns.
 
 
 
