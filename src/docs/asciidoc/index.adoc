@@ -47,21 +47,17 @@ TODO: let's sprinkle some of the trade-offs throughout, which allows Eoin to put
 == Problem of Successful Systems
 
 Long lived applications suffer from architectural problems.
-[%step]
 
 * the architectural style erodes until it is hard to discern
 * not clear how new features fit in the architecture
 * pattern implementations weaken and become unclear
 * coherency weakens due to adhoc architecture evolution
 
-[%step]
 _Change becomes difficult as implementation and architecture drift apart due to them being different artefact groups._
 
 
 [.eoin]
 == Specific Problems
-
-[%step]
 
 * Business logic drifts into adjacent layers
 * Domain model becomes unwieldy ("tactical" changes)
@@ -155,18 +151,15 @@ image::what-is-nakedobjects/incredible-machine.png[width=650px]
 [.eoin]
 == Generic UI/UX
 
-Generic UI allows framework to generate the UI.
+Generic UI provides a framework generated UI "for free"
 
-[%step]
-
-* Good UI is expensive and difficult to get right
+* A good UI is expensive and difficult to get right
 * UI and UX skills relatively rare in most organisations
-* Difficult to create consistent UI at scale
-* Generated UIs "upgrade" whole UI at once
-* Avoiding custom development allows easier replacement
+* Difficult to maintain a consistent UI at scale
+* Avoiding custom code eases upgrade & replacement
 * Generated UI prevents accidental coupling.
 
-Tradeoff is innability to (easily) support special cases or experimentation.
+_Tradeoff is the difficulty of supporting special cases_
 
 
 [NOTE.speaker]
@@ -265,8 +258,6 @@ link:images/rad/estatio-resetDates.mp4[demo: UI derived from domain model]
 
 Generic UI can have advantages in development efficiency, UX consistency and future proofing. What are the trade offs?
 
-[%step]
-
 * How much control can an application have on its UI?
 * Can layout, look-and-feel, flow, colour be changed easily?
 * What if an application needs a new widget type entirely?
@@ -309,12 +300,14 @@ link:images/rad/estatio-layout.mp4[demo: customizing the UI using `.layout.xml`]
 [.eoin]
 == Other Cross-cutting concerns
 
-[%step]
+* a generic UI treats the UI as a cross-cutting concern
+* enabled by the magic of a meta-model and other concerns can be tackled too
+** check & enforce patterns or constraints
+** add security automatically
+** add an audit trail
+** add generic processing (e.g. export) automatically
 
-* a generic UI really treats presentation as a cross-cutting concern
-* once you have a meta-model in your hands, there are other cross-cutting concerns that can be tackled
-* given that a significant part of architecture is figuring out how to tackle these "-ilities", this is significant
-* ...
+_Like a standardised version of aspects_
 
 
 
@@ -356,14 +349,12 @@ image::cross-cutting/security.png[width=960px]
 
 The "system of systems" forming the technology environment for an organisation.  Concerns include:
 
-[%step]
-
 * What is the functional scope of each system?
 * How do systems interact to support business processes?
-* Where is data mastered, owned, copied, changed, accessed?  How is it stored?
+* How is data stored, mastered, owned, changed, accessed?
 * What technical standardisation is available/valuable?
 
-Does Apache Isis help or hinder the evolution of an enterprise's technology architecture?
+_Does Isis help the evolution of an enterprise architecture?_
 
 
 
@@ -508,10 +499,11 @@ Implementations can use Interaction.Execution#getDto() to obtain a serializable 
 == Concluding
 
 [%step]
-
-* ...
-* ...
-* ...
+* Most projects build their own architecture framework
+** This provides a lot of flexibility and control
+** ... and a lot of work
+** ... and constant potential for inconsistency
+* By accepting the constraints of Isis, the "architecture" comes for free and enforces true modularity and separation of concerns.
 
 
 
@@ -546,16 +538,14 @@ Implementations can use Interaction.Execution#getDto() to obtain a serializable 
 [.eoin]
 == Appendix: Architectural Constraints
 
-Implementation and architecture part company when it is hard to remember the architectural constraints
-
-[%step]
+Architecture & code diverge when it is hard to remember and implement the architectural constraints
 
 * Constraints are there to reduce implementation freedom
-* Allow focus on what is important
+** ... and allow focus on what is important
 * Hard to know how architectural constraints are realised
 * Frameworks such as Apache Isis aim to embody the constraints _within_ the framework
 
-Try to make the "right" thing the "easy" thing
+_Try to make the "right" thing the "easy" thing_
 
 
 
@@ -597,18 +587,14 @@ image::architecture-constraints/180.png[width=960px]
 [.eoin]
 == Appendix: Maintainable Monoliths
 
-Current fashion is towards "microservices" (often without much thought as to trade offs).  However monoliths are perfectly maintainable if well built and evolved.
-
-[%step]
+Current fashion is towards "microservices" but monoliths are perfectly maintainable if well built and evolved.
 
 * Genuine modularity and dependency management is key
-* Understanding many types of coupling (message, data, control, global data, pathological)
+* Many types of coupling (message, data, control, ...)
 * Ensure high cohesion in modules, avoid "buckets of code"
 * Need to achieve measurement and visibility
 
-This is all easier to enforce when code is physically separate (hence microservices) but can be done in a monolith perfectly well.
-
-How does Apache Isis do it?
+_Easier when code is partitioned - how does Isis do it?_
 
 [NOTE.speaker]
 ====
@@ -810,8 +796,6 @@ public class ItemCompletedSubscriber {
 
 A framework generated UI allows for change.  How does this work?
 
-[%step]
-
 * Replace the UI technology in use without affecting core code?
 * Provide more than one UI simultaneously?
 * What does Apache Isis assume about the UI technology it uses?
@@ -880,15 +864,12 @@ link:images/alternatives/contactapp-1.mp4[example of a custom UI: contactapp]
 [.eoin]
 == Appendix: Coupling to the Framework?
 
-Most frameworks are a high commitment "lifestyle choice".  What is being coupled to Apache Isis like?
-
-[%step]
+Frameworks imply high commitment - what is being coupled to Apache Isis like?
 
 * Constraints on the domain model code?
-* Degree of dependence domain code needs on Apache Isis?
-* Degree of dependence domain code generally has on Apache Isis?
+* Degree of dependence domain code on Apache Isis?
 * Reuse Apache Isis domain models?
-* Replace 3rd party components used by Apache Isis?  (e.g. persistence layer ORM)
+* Replace 3rd party components?  (e.g. ORM library)
 
 
 
