@@ -210,11 +210,6 @@ image::history/2009-scimpi.png[width=960px]
 
 [.dan]
 [%notitle]
-=== 2012 wicket
-image::history/2012-wicket.png[width=960px]
-
-[.dan]
-[%notitle]
 === 2013
 image::history/2013-TransportDemand.png[width=960px]
 
@@ -226,7 +221,7 @@ image::history/2014-estatio.png[width=960px]
 [.dan]
 [%notitle]
 === 2015
-image::history/2015-estatio.png[width=960px]
+image::history/2015-commplan.png[width=960px]
 
 [.dan]
 [%notitle]
@@ -239,8 +234,9 @@ image::history/2016-todoapp.png[width=960px]
 == An example: Estatio
 
 * *_Estatio_* is an invoicing application for tenants within a shopping centre
-* Developed for Eurocommercial Properties, currently deployed to Italy and France
+* Developed for Eurocommercial Properties, deployed to the three operating countries (Italy, France & Sweden)
 * The code also happens to be open source (on github)
+** A useful "reference example" for the Apache Isis user community
 
 
 [.dan]
@@ -324,7 +320,7 @@ image::cross-cutting/swagger.png[width=960px]
 [%notitle]
 === Security
 
-image::cross-cutting/security.png[width=960px]
+link:images/cross-cutting/estatio-security.mp4[demo: security module role/permissions derived from metamodel]
 
 
 
@@ -406,22 +402,16 @@ image::eai/450.PNG[width=960px]
 
 [source,java]
 ----
-public static class CompletedDomainEvent
-                    extends ToDoItem.ActionDomainEvent {}
 @Action(
-    domainEvent = CompletedDomainEvent.class,
+    invokeOn = InvokeOn.OBJECT_AND_COLLECTION,
     publishing = Publishing.ENABLED
 )
-public ToDoItem completed() {
-    setComplete(true);
+public Invoice approve() {
+    setStatus(InvoiceStatus.APPROVED);
+    return this;
 }
 ----
 
-
-[NOTE.speaker]
-====
-eg publish onto the Apache Camel bus (and persist as entity for retry)
-====
 
 
 [.dan]
@@ -434,12 +424,6 @@ public interface PublisherService {
 }
 ----
 
-[NOTE.speaker]
-====
-Implementations can use Interaction.Execution#getDto() to obtain a serializable XML representation of the execution.
-====
-
-
 
 
 
@@ -450,48 +434,56 @@ Implementations can use Interaction.Execution#getDto() to obtain a serializable 
 
 [source,xml]
 ----
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ixn:interactionDto xmlns:com="http://isis.apache.org/schema/common"
                     xmlns:cmd="http://isis.apache.org/schema/cmd"
                     xmlns:ixn="http://isis.apache.org/schema/ixn">
-  <ixn:transactionId>8236d616-6fde-45d9-9526-cb7a50b4bd88</ixn:transactionId>
-  <ixn:execution xsi:type="ixn:actionInvocationDto"
-       interactionType="action_invocation"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <ixn:sequence>0</ixn:sequence>
-    <ixn:target type="todo.ToDoItem" id="0"/>
-    <ixn:memberIdentifier>todoapp.dom.todoitem.ToDoItem#completed()</ixn:memberIdentifier>
-    <ixn:parameters/>
-    <ixn:returned type="reference" null="false">
-      <com:reference type="todo.ToDoItem" id="0"/>
-    </ixn:returned>
-    <ixn:user>todoapp-admin</ixn:user>
-    <ixn:title>todo.ToDoItem:0: completed()</ixn:title>
-    <ixn:metrics>
-      <ixn:timings>
-        <com:startedAt>2016-09-19T20:36:03.414+01:00</com:startedAt>
-        <com:completedAt>2016-09-19T20:36:03.418+01:00</com:completedAt>
-      </ixn:timings>
-      <ixn:objectCounts>
-        <ixn:loaded before="3" after="3"/>
-        <ixn:dirtied before="0" after="1"/>
-      </ixn:objectCounts>
-    </ixn:metrics>
-  </ixn:execution>
+    <ixn:transactionId>929c2e7a-6318-4f4c-ab7b-96b3632d6731</ixn:transactionId>
+    <ixn:execution xsi:type="ixn:actionInvocationDto"
+            interactionType="action_invocation"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ixn:sequence>0</ixn:sequence>
+        <ixn:target type="org.estatio.dom.invoice.Invoice" id="1"/>
+        <ixn:memberIdentifier>org.estatio.dom.invoice.Invoice#approve()</ixn:memberIdentifier>
+        <ixn:parameters/>
+        <ixn:returned type="reference" null="false">
+            <com:reference type="org.estatio.dom.invoice.Invoice" id="1"/>
+        </ixn:returned>
+        <ixn:user>estatio-admin</ixn:user>
+        <ixn:title>org.estatio.dom.invoice.Invoice:1: approve()</ixn:title>
+        <ixn:metrics>
+            <ixn:timings>
+                <com:startedAt>2016-09-30T13:57:19.825+01:00</com:startedAt>
+                <com:completedAt>2016-09-30T13:57:19.832+01:00</com:completedAt>
+            </ixn:timings>
+            <ixn:objectCounts>
+                <ixn:loaded before="4" after="6"/>
+                <ixn:dirtied before="0" after="1"/>
+            </ixn:objectCounts>
+        </ixn:metrics>
+    </ixn:execution>
 </ixn:interactionDto>
 ----
 
+
+
+[.dan]
+[%notitle]
+=== Cross-cutting
+
+link:images/cross-cutting/estatio-publishing.mp4[demo: publishing an action, cross-referencing the audit trail]
 
 
 
 [.eoin]
 == Concluding
 
-* Most projects build their own architecture framework
+Most projects build their own architecture framework
+
 * This provides a lot of flexibility and control...
 * ... but also a lot of work
 * ... and the constant potential for inconsistency
-* By accepting the constraints of Apache Isis, the "architecture" comes for free and enforces true modularity and separation of concerns.
+
+_By accepting the constraints of Apache Isis, the "architecture" comes for free and enforces true modularity and separation of concerns_
 
 
 
