@@ -157,7 +157,7 @@ Generic UI provides a framework generated UI "for free"
 * UI and UX skills relatively rare in most organisations
 * Difficult to maintain a consistent UI at scale
 * Avoiding custom code eases upgrade & replacement
-* Generated UI prevents accidental coupling.
+* Generated UI prevents accidental coupling
 
 _Tradeoff is the difficulty of supporting special cases_
 
@@ -191,12 +191,12 @@ dan: the irony of writing a naked objects framework if one is more interested in
 [.dan]
 [%notitle]
 === 2005
-image::history/2005-dnd.png[width=960px]
+image::history/2003-dnd.png[width=960px]
 
 [.dan]
 [%notitle]
 === 2006
-image::history/2006-dsfa.png[width=960px]
+image::history/2005-dsfa.png[width=960px]
 
 [.dan]
 [%notitle]
@@ -487,7 +487,6 @@ Implementations can use Interaction.Execution#getDto() to obtain a serializable 
 [.eoin]
 == Concluding
 
-[%step]
 * Most projects build their own architecture framework
 * This provides a lot of flexibility and control...
 * ... but also a lot of work
